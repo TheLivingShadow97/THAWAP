@@ -13,19 +13,19 @@ from BaseClasses import Item, ItemClassification
 
 # These come from the other files in this example. If you want to see the source ctrl + click the name
 # You can also do that ctrl + click for any functions to see what they do
-from .Types import ItemData, ChapterType, APSkeletonItem, chapter_type_to_name
+from .Types import ItemData, ChapterType, THAWItem, chapter_type_to_name
 from .Locations import get_total_locations
 from typing import List, Dict, TYPE_CHECKING
 
 # This is just making sure nothing gets confused dw about what its doing exactly
 if TYPE_CHECKING:
-    from . import APSkeletonWorld
+    from . import THAWWorld
 
 # If you're curious about the -> List[Item] that is a syntax to make sure you return the correct variable type
 # In this instance we're saying we only want to return a list of items
 # You'll see a bunch of other examples of this in other functions
 # It's main purpose is to protect yourself from yourself
-def create_itempool(world: "APSkeletonWorld") -> List[Item]:
+def create_itempool(world: "THAWWorld") -> List[Item]:
     # This is the empty list of items. You'll add all the items in the game to this list
     itempool: List[Item] = []
 
@@ -38,7 +38,7 @@ def create_itempool(world: "APSkeletonWorld") -> List[Item]:
 
     # For this example I'll make it so there is a starting chapter
     # We loop through all the chapters in the my_chapter section
-    for chapter in ap_skeleton_chapters.keys():
+    for chapter in THAW_chapters.keys():
         # If the starting chapter equals the chapter we're looking at skip it
         # We skip it since we dont want to add the chapter the player started with to the item pool
         print("-------------------------")
@@ -62,23 +62,23 @@ def create_itempool(world: "APSkeletonWorld") -> List[Item]:
     return itempool
 
 # This is a generic function to create a singular item
-def create_item(world: "APSkeletonWorld", name: str) -> Item:
+def create_item(world: "THAWWorld", name: str) -> Item:
     data = item_table[name]
-    return APSkeletonItem(name, data.classification, data.ap_code, world.player)
+    return THAWItem(name, data.classification, data.ap_code, world.player)
 
 # Another generic function. For creating a bunch of items at once!
-def create_multiple_items(world: "APSkeletonWorld", name: str, count: int,
+def create_multiple_items(world: "THAWWorld", name: str, count: int,
                           item_type: ItemClassification = ItemClassification.progression) -> List[Item]:
     data = item_table[name]
     itemlist: List[Item] = []
 
     for i in range(count):
-        itemlist += [APSkeletonItem(name, item_type, data.ap_code, world.player)]
+        itemlist += [THAWItem(name, item_type, data.ap_code, world.player)]
 
     return itemlist
 
 # Finally, where junk items are created
-def create_junk_items(world: "APSkeletonWorld", count: int) -> List[Item]:
+def create_junk_items(world: "THAWWorld", count: int) -> List[Item]:
     trap_chance = world.options.TrapChance.value
     junk_pool: List[Item] = []
     junk_list: Dict[str, int] = {}
@@ -115,7 +115,7 @@ def create_junk_items(world: "APSkeletonWorld", count: int) -> List[Item]:
 # Watch out for overlap with your item codes
 # These are just random numbers dont trust them PLEASE
 # I've seen some games that dynamically add item codes such as DOOM as well
-ap_skeleton_items = {
+THAW_items = {
     # Progression items
     "A cute rat": ItemData(20050001, ItemClassification.progression),
     "Estrogen": ItemData(20050002, ItemClassification.progression),
@@ -132,7 +132,7 @@ ap_skeleton_items = {
 
 # I like to split up the items so that its easier to look at and since sometimes you only need to look at one specific type of list
 # An example of that is in create_itempool where I simulated having a starting chapter
-ap_skeleton_chapters = {
+THAW_chapters = {
     "Green Hill Zone": ItemData(20050008, ItemClassification.progression),
     "Romania": ItemData(20050009, ItemClassification.progression),
     "The Sewer": ItemData(20050010, ItemClassification.progression)
@@ -161,7 +161,7 @@ junk_weights = {
 # This makes a really convenient list of all the other dictionaries
 # (fun fact: {} is a dictionary)
 item_table = {
-    **ap_skeleton_items,
-    **ap_skeleton_chapters,
+    **THAW_items,
+    **THAW_chapters,
     **junk_items
 }

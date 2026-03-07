@@ -37,7 +37,7 @@ class THAWWeb(WebWorld):
         "English",
         "setup_en.md",
         "setup/en",
-        ["Nep (but you would put your name!)"]
+        ["TheLivingShadow"]
     )]
 
 # This class is the real meat and potatoes

@@ -7,11 +7,11 @@ from typing import NamedTuple, Optional
 from BaseClasses import Location, Item, ItemClassification
 
 # These 2 make it so that the generic Location and Item types are more specific for your game
-class APSkeletonLocation(Location):
-    game = "APSkeleton"
+class THAWLocation(Location):
+    game = "THAW"
 
-class APSkeletonItem(Item):
-    game = "APSkeleton"
+class THAWItem(Item):
+    game = "THAW"
 
 # I use these next 2 to convert the number you get from the options into a name
 # Mainly used in Items.py for starting chapter
