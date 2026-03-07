@@ -16,7 +16,7 @@ class VictoryCondition(Choice):
     """
     Determines your victory condition.
     When you grab choice you'll get the associated number.
-    IE: If the player chooses the sewer then when you go to call StartingChapter you'll get 3
+    IE: If the player chooses the sewer then when you go to call VictoryCondition you'll get 3
     When displaying the options names on the site, _ will become spaces and the word option will go away.
     """
     display_name = "Victory Condition"
