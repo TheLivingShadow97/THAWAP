@@ -16,15 +16,17 @@ class THAWItem(Item):
 # I use these next 2 to convert the number you get from the options into a name
 # Mainly used in Items.py for starting chapter
 # Not important for a lot of games
-class ChapterType(IntEnum):
-    GreenHillZone = 1
-    Romania = 2
-    Sewer = 3
+class VictoryConditionType(IntEnum):
+    SmashTheTRex = 1
+    # GetToTheSkateRanch = 2
+    # WinASkateCompetition = 3
+    # BeatTheGame = 4
 
-chapter_type_to_name = {
-    ChapterType.GreenHillZone:  "Green Hill Zone",
-    ChapterType.Romania:        "Romania",
-    ChapterType.Sewer:          "The Sewer"
+victory_condition_type_to_name = {
+    VictoryConditionType.SmashTheTRex:  "Smash the T-Rex",
+    # VictoryConditionType.GetToTheSkateRanch: "Get to the Skate Ranch",
+    # VictoryConditionType.WinASkateCompetition: "Win a Skate Competition",
+    # VictoryConditionType.BeatTheGame: "Beat the Game"
 }
 
 # Here is where all the stuff from the Items.py comes from

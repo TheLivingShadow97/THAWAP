@@ -20,12 +20,20 @@ def create_regions(world: "THAWWorld"):
     hollywood = create_region(world, "Hollywood")
     beverlyhills = create_region_and_connect(world, "Beverly Hills", "Hollywood -> Beverly Hills", hollywood)
     skateranch = create_region_and_connect(world, "Skate Ranch", "Beverly Hills -> Skate Ranch", beverlyhills)
-    downtown = create_region_and_connect(world, "Downtown", "Skate Ranch -> Downtown", skateranch)
+    hollywoodstage2 = create_region_and_connect(world, "Hollywood Stage 2", "Skate Ranch -> Hollywood Stage 2", skateranch)
+    beverlyhillsstage2 = create_region_and_connect(world, "Beverly Hills Stage 2", "Skate Ranch -> Beverly Hills Stage 2", skateranch)
+    downtown = create_region_and_connect(world, "Downtown", "Hollywood Stage 2 -> Downtown", hollywoodstage2)
     vanspark = create_region_and_connect(world, "Vans Park", "Downtown -> Vans Park", downtown)
     santamonica = create_region_and_connect(world, "Santa Monica", "Vans Park -> Santa Monica", vanspark)
     oilrig = create_region_and_connect(world, "Oil Rig", "Santa Monica -> Oil Rig", santamonica)
     eastla = create_region_and_connect(world, "East LA", "Oil Rig -> East LA", oilrig)
-    casino = create_region_and_connect(world, "Casino", "East LA -> Casino", eastla)
+    skateranchstage2 = create_region_and_connect(world, "Skate Ranch Stage 2", "East LA -> Skate Ranch Stage 2", eastla)
+    beverlyhillsstage3 = create_region_and_connect(world, "Beverly Hills Stage 3", "Skate Ranch Stage 2 -> Beverly Hills Stage 3", skateranchstage2)
+    hollywoodstage3 = create_region_and_connect(world, "Hollywood Stage 3", "Skate Ranch Stage 2 -> Hollywood Stage 3", skateranchstage2)
+    downtownstage2 = create_region_and_connect(world, "Downtown Stage 2", "Skate Ranch Stage 2 -> Downtown Stage 2", skateranchstage2)
+    santamonicastage2 = create_region_and_connect(world, "Santa Monica Stage 2", "Skate Ranch Stage 2 -> Santa Monica Stage 2", skateranchstage2)
+    eastlastage2 = create_region_and_connect(world, "East LA Stage 2", "Skate Ranch Stage 2 -> East LA Stage 2", skateranchstage2)
+    casino = create_region_and_connect(world, "Casino", "East LA -> Casino", eastlastage2)
 
 
 def create_region(world: "THAWWorld", name: str) -> Region:

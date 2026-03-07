@@ -13,7 +13,7 @@ from BaseClasses import Item, ItemClassification
 
 # These come from the other files in this example. If you want to see the source ctrl + click the name
 # You can also do that ctrl + click for any functions to see what they do
-from .Types import ItemData, ChapterType, THAWItem, chapter_type_to_name
+from .Types import ItemData, VictoryConditionType, THAWItem, victory_condition_type_to_name
 from .Locations import get_total_locations
 from typing import List, Dict, TYPE_CHECKING
 
@@ -34,26 +34,16 @@ def create_itempool(world: "THAWWorld") -> List[Item]:
     # I can point to Sly Cooper and the Thievious Raccoonus since I did that
 
     # This is a good place to grab anything you need from options
-    starting_chapter = chapter_type_to_name[ChapterType(world.options.StartingChapter)]
-
-    # For this example I'll make it so there is a starting chapter
-    # We loop through all the chapters in the my_chapter section
-    for chapter in THAW_chapters.keys():
-        # If the starting chapter equals the chapter we're looking at skip it
-        # We skip it since we dont want to add the chapter the player started with to the item pool
-        print("-------------------------")
-        print(starting_chapter)
-        print("-------------------------")
-        if starting_chapter == chapter:
-            continue
-        # Otherwise then we create an item with that name and add it to the item pool
-        else:
-            itempool.append(create_item(world, chapter))
+    victory_condition = victory_condition_type_to_name[VictoryConditionType(world.options.VictoryCondition)]
     
     # It's up to you and how you want things organized but I like to deal with victory here
     # This creates your win item and then places it at the "location" where you win
-    victory = create_item(world, "Victory")
-    world.multiworld.get_location("Beat Final Boss", world.player).place_locked_item(victory)
+    if victory_condition == "Smash the T-Rex":
+        victory = create_item(world, "Victory")
+        world.multiworld.get_location("Smash the T-rex", world.player).place_locked_item(victory)
+
+    #if victory_condition == "Get to the Skate Ranch":
+    #    victory = create_item(world, "Victory")
 
     # Then junk items are made
     # Check out the create_junk_items function for more details
@@ -132,11 +122,11 @@ THAW_items = {
 
 # I like to split up the items so that its easier to look at and since sometimes you only need to look at one specific type of list
 # An example of that is in create_itempool where I simulated having a starting chapter
-THAW_chapters = {
-    "Green Hill Zone": ItemData(20050008, ItemClassification.progression),
-    "Romania": ItemData(20050009, ItemClassification.progression),
-    "The Sewer": ItemData(20050010, ItemClassification.progression)
-}
+# THAW_chapters = {
+#     "Green Hill Zone": ItemData(20050008, ItemClassification.progression),
+#    "Romania": ItemData(20050009, ItemClassification.progression),
+#    "The Sewer": ItemData(20050010, ItemClassification.progression)
+# }
 
 # In the way that I made items, I added a way to specify how many of an item should exist
 # That's why junk has a 0 since how many are created is in the create_junk_items
@@ -147,8 +137,8 @@ junk_items = {
     "Coughing Baby": ItemData(20050012, ItemClassification.filler, 0),
 
     # Traps
-    "Forcefem Trap": ItemData(20050013, ItemClassification.trap, 0),
-    "Speed Change Trap": ItemData(20050014, ItemClassification, 0)
+    #"Forcefem Trap": ItemData(20050013, ItemClassification.trap, 0),
+    #"Speed Change Trap": ItemData(20050014, ItemClassification, 0)
 }
 
 # Junk weights is just how often an item will be chosen when junk is being made
@@ -162,6 +152,5 @@ junk_weights = {
 # (fun fact: {} is a dictionary)
 item_table = {
     **THAW_items,
-    **THAW_chapters,
     **junk_items
 }

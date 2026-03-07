@@ -16,13 +16,6 @@ def set_rules(world: "THAWWorld"):
     options = world.options
 
     # Chapter Access
-    add_rule(world.multiworld.get_entrance("Hollywood -> Green Hill Zone", player),
-             lambda state: state.has("Green Hill Zone", player))
-    add_rule(world.multiworld.get_entrance("Hollywood -> Romania", player),
-             lambda state: state.has("Romania", player))
-    add_rule(world.multiworld.get_entrance("Hollywood -> The Sewer", player),
-             lambda state: state.has("The Sewer", player))
-    
     add_rule(world.multiworld.get_entrance("The Sewer -> Big Hole in the Floor", player),
              lambda state: state.has("A cute rat") and state.has("Estrogen") and state.has("Testosterone"))
     
