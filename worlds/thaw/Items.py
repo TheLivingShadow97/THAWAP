@@ -69,10 +69,10 @@ def create_multiple_items(world: "THAWWorld", name: str, count: int,
 
 # Finally, where junk items are created
 def create_junk_items(world: "THAWWorld", count: int) -> List[Item]:
-    trap_chance = world.options.TrapChance.value
+    #trap_chance = world.options.TrapChance.value
     junk_pool: List[Item] = []
     junk_list: Dict[str, int] = {}
-    trap_list: Dict[str, int] = {}
+    #trap_list: Dict[str, int] = {}
 
     # This grabs all the junk items and trap items
     for name in item_table.keys():
@@ -83,19 +83,19 @@ def create_junk_items(world: "THAWWorld", count: int) -> List[Item]:
 
         # This is for traps if your randomization includes it
         # It also grabs the trap weights from the options page
-        elif trap_chance > 0 and ic == ItemClassification.trap:
-            if name == "Forcefem Trap":
-                trap_list[name] = world.options.ForcefemTrapWeight.value
-            elif name == "Speed Change Trap":
-                trap_list[name] = world.options.SpeedChangeTrapWeight.value
+        #elif trap_chance > 0 and ic == ItemClassification.trap:
+            #if name == "Forcefem Trap":
+                #trap_list[name] = world.options.ForcefemTrapWeight.value
+            #elif name == "Speed Change Trap":
+                #trap_list[name] = world.options.SpeedChangeTrapWeight.value
 
     # Where all the magic happens of adding the junk and traps randomly
     # AP does all the weight management so we just need to worry about how many are created
     for i in range(count):
-        if trap_chance > 0 and world.random.randint(1, 100) <= trap_chance:
-            junk_pool.append(world.create_item(
-                world.random.choices(list(trap_list.keys()), weights=list(trap_list.values()), k=1)[0]))
-        else:
+        #if trap_chance > 0 and world.random.randint(1, 100) <= trap_chance:
+            #junk_pool.append(world.create_item(
+                #world.random.choices(list(trap_list.keys()), weights=list(trap_list.values()), k=1)[0]))
+        #else:
             junk_pool.append(world.create_item(
                 world.random.choices(list(junk_list.keys()), weights=list(junk_list.values()), k=1)[0]))
 
