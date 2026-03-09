@@ -1,9 +1,9 @@
-# This is where your game name would be!
+# Tony Hawk's American Wasteland!
 
 ## Where is the options page?
 
 Here is where you put the instructions on how to get to the options page. What is currently there should work and direct the player
-your game/player-options which is the normal page for options. Really only change this to spice it up or if something weir is happening
+your game/player-options which is the normal page for options. Really only change this to spice it up or if something weird is happening
 
 The [player options page for this game](../player-options) contains all the options you need to configure and export a
 config file.

@@ -1,18 +1,15 @@
-# Your game here!
+# Tony Hawk's American Wasteland!
 
-## Required Software
+## Required Software (Read This!)
 
-- A legally obtained copy of the game your are randomizing. Include the version if it needs to be specific (IE: NTSC/NA/Steam/Whatever else)
-- Anything else!
-    - You can use [this syntax to add hyperlinks to emulators or other web pages](https://www.ikea.com/us/en/p/blahaj-soft-toy-shark-90373590/)
-    - Be specific! Include versions! You'll still get asked why it's broken and it'll be a versioning issue but hey you can try
+- This Archipelago is built for Tony Hawk's American Wasteland (USA) [Greatest Hits] edition for PS2. You will need a legally obtained ROM of this game to play it.
+
+- You will need a current version of PCSX2 [(Download found here)](https://pcsx2.net/downloads). I've developed this in version 2.6.2, so if there are future hiccups play it in this version.
 - The built-in Archipelago client, which can be installed [here](https://github.com/ArchipelagoMW/Archipelago/releases)
 
 ## Configuring your YAML file
 
 ### What is a YAML file and why do I need one?
-
-You can leave this alone since it will be the same for every game so just delete this! I'm just here for explanations.
 
 Your YAML file contains a set of configuration options which provide the generator with information about how it should
 generate your game. Each player of a multiworld will provide their own YAML file. This setup allows each player to enjoy
