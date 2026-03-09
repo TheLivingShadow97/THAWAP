@@ -106,15 +106,41 @@ def create_junk_items(world: "THAWWorld", count: int) -> List[Item]:
 # These are just random numbers dont trust them PLEASE
 # I've seen some games that dynamically add item codes such as DOOM as well
 THAW_items = {
-    # Progression items
-    "A cute rat": ItemData(20050001, ItemClassification.progression),
-    "Estrogen": ItemData(20050002, ItemClassification.progression),
-    "Testosterone": ItemData(20050003, ItemClassification.progression),
+    # Player Stats
+    "Progressive Air Stat": ItemData(10000001, ItemClassification.useful, 10),
+    "Progressive Speed Stat": ItemData(10000002, ItemClassification.progression, 10),
+    "Progressive Rail Stat": ItemData(10000003, ItemClassification.progression, 10),
+    "Progressive Manual Stat": ItemData(10000004, ItemClassification.useful, 10),
+    "Progressive Flip Stat": ItemData(10000005, ItemClassification.useful, 10),
+    "Progressive Lip Stat": ItemData(10000006, ItemClassification.useful, 10),
+    "Progressive Ollie Stat": ItemData(10000007, ItemClassification.progression, 10),
+    "Progressive Run Stat": ItemData(10000008, ItemClassification.useful, 10),
+    "Progressive Switch Stat": ItemData(10000009, ItemClassification.progression, 10),
+    "Progressive Spin Stat": ItemData(10000010, ItemClassification.useful, 10),
 
-    # Useful items
-    "A good friend": ItemData(20050004, ItemClassification.useful),
-    "500 cigarettes": ItemData(20050005, ItemClassification.useful),
-    "Crime Baby": ItemData(20050006, ItemClassification.useful),
+    # Player Skating Abilities
+    "Skate Ability: Caveman": ItemData(11000001, ItemClassification.progression),
+    "Skate Ability: Manual": ItemData(11000002, ItemClassification.progression),
+    "Skate Ability: Revert": ItemData(11000003, ItemClassification.progression),
+    "Skate Ability: Spine Transfer/Acid Drop/Bank Drop": ItemData(11000004, ItemClassification.progression),
+    "Skate Ability: Wall Ride": ItemData(11000005, ItemClassification.progression),
+    "Skate Ability: Sticker Slap/Wall Plant/Vert Wall Plant": ItemData(11000006, ItemClassification.progression),
+    "Skate Ability: Natas Spin": ItemData(11000007, ItemClassification.progression),
+    "Skate Ability: Boneless": ItemData(11000008, ItemClassification.progression),
+    "Skate Ability: Boned Ollie": ItemData(11000009, ItemClassification.progression),
+    "Skate Ability: Flips/Rolls": ItemData(11000010, ItemClassification.progression),
+    "Skate Ability: Wall Run": ItemData(11000011, ItemClassification.progression),
+    "Skate Ability: Shimmy": ItemData(11000012, ItemClassification.progression),
+    "Skate Ability: Wall Flip": ItemData(11000013, ItemClassification.progression),
+    "Skate Ability: Back Tuck/Front Tuck": ItemData(11000014, ItemClassification.progression),
+    "Skate Ability: Bert Slide": ItemData(11000015, ItemClassification.progression),
+    "Skate Ability: Skitch": ItemData(11000016, ItemClassification.progression),
+    "Skate Ability: Special": ItemData(11000017, ItemClassification.progression),
+    "Skate Ability: Focus": ItemData(11000018, ItemClassification.progression),
+    "Skate Ability: Stall": ItemData(11000019, ItemClassification.progression),
+    "Skate Ability: Flatland": ItemData(11000020, ItemClassification.progression),
+
+    # Unlocked Special Tricks
 
     # Victory is added here since in this organization it needs to be in the default item pool
     "Victory": ItemData(20050007, ItemClassification.progression)
@@ -132,9 +158,13 @@ THAW_items = {
 # That's why junk has a 0 since how many are created is in the create_junk_items
 # There is a better way of doing this but this is my jank
 junk_items = {
-    # Junk
-    "An Old Gamecube": ItemData(20050011, ItemClassification.filler, 0),
-    "Coughing Baby": ItemData(20050012, ItemClassification.filler, 0),
+    # Junk and Cash
+    "5 Bucks": ItemData(90000001, ItemClassification.filler | ItemClassification.progression_skip_balancing, 0),
+    "10 Bucks": ItemData(90000002, ItemClassification.filler | ItemClassification.progression_skip_balancing, 0),
+    "40 Bucks": ItemData(90000003, ItemClassification.filler | ItemClassification.progression_skip_balancing, 0),
+    "100 Bucks": ItemData(90000004, ItemClassification.filler | ItemClassification.progression_skip_balancing, 0),
+    "200 Bucks": ItemData(90000005, ItemClassification.filler | ItemClassification.progression_skip_balancing, 0),
+    "500 Bucks": ItemData(90000006, ItemClassification.filler | ItemClassification.progression_skip_balancing, 0),
 
     # Traps
     #"Forcefem Trap": ItemData(20050013, ItemClassification.trap, 0),
@@ -144,8 +174,12 @@ junk_items = {
 # Junk weights is just how often an item will be chosen when junk is being made
 # Bigger item = more likely to show up
 junk_weights = {
-    "An Old Gamecube": 40,
-    "Coughing Baby": 20
+    "5 Bucks": 30,
+    "10 Bucks": 25,
+    "40 Bucks": 10,
+    "100 Bucks": 6,
+    "200 Bucks": 5,
+    "500 Bucks": 3
 }
 
 # This makes a really convenient list of all the other dictionaries
