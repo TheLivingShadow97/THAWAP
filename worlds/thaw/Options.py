@@ -1,37 +1,57 @@
-from typing import List, Dict, Any
 from dataclasses import dataclass
-from worlds.AutoWorld import PerGameCommonOptions
-from Options import Choice, OptionGroup, Toggle, Range
 
-# If youve ever gone to an options page and seen how sometimes options are grouped
-# This is that
-def create_option_groups() -> List[OptionGroup]:
-    option_group_list: List[OptionGroup] = []
-    for name, options in THAW_option_groups.items():
-        option_group_list.append(OptionGroup(name=name, options=options))
+from Options import Choice, OptionGroup, PerGameCommonOptions, Range, Toggle
 
-    return option_group_list
+# In this file, we define the options the player can pick.
+# The most common types of options are Toggle, Range and Choice.
 
-class VictoryCondition(Choice):
+# Options will be in the game's template yaml.
+# They will be represented by checkboxes, sliders etc. on the game's options page on the website.
+# (Note: Options can also be made invisible from either of these places by overriding Option.visibility.
+#  APQuest doesn't have an example of this, but this can be used for secret / hidden / advanced options.)
+
+# For further reading on options, you can also read the Options API Document:
+# https://github.com/ArchipelagoMW/Archipelago/blob/main/docs/options%20api.md
+
+class EndGoal(Choice):
     """
-    Determines your victory condition.
-    When you grab choice you'll get the associated number.
-    IE: If the player chooses the sewer then when you go to call VictoryCondition you'll get 3
-    When displaying the options names on the site, _ will become spaces and the word option will go away.
-    """
-    display_name = "Victory Condition"
-    option_smash_the_t_rex = 1
-    # option_get_to_the_skate_ranch = 2
-    # option_win_a_skate_competition = 3
-    # option_beat_the_game = 4
-    default = 1
+    Determine the goal for the seed
 
+    Smash the T-Rex: Break the T-rex and gain access to Bevely Hills. Should be a faster game suitable for syncs.
+    Get to the Skate Ranch: Reach the Skate Ranch to win. THIS DOES NOT WORK YET! DO NOT USE THIS OPTION!
+    """
+    display_name = "Victory Goal"
+    option_smash_the_t_rex = 0
+    option_get_to_the_skate_ranch = 1
+    default = 0
+
+# We must now define a dataclass inheriting from PerGameCommonOptions that we put all our options in.
+# This is in the format "option_name_in_snake_case: OptionClassName".
 @dataclass
 class THAWOptions(PerGameCommonOptions):
-    VictoryCondition:            VictoryCondition
+    end_goal: EndGoal
 
-# This is where you organize your options
-# Its entirely up to you how you want to organize it
-THAW_option_groups: Dict[str, List[Any]] = {
-    "Victory Options": [VictoryCondition],
+
+# If we want to group our options by similar type, we can do so as well. This looks nice on the website.
+option_groups = [
+    OptionGroup(
+        "Gameplay Options",
+        [EndGoal],
+    )
+]
+
+# Finally, we can define some option presets if we want the player to be able to quickly choose a specific "mode".
+option_presets = {
+    "Quickplay": {
+        "end_goal": EndGoal.option_smash_the_t_rex,
+    },
+    #"the true way to play": {
+    #    "hard_mode": True,
+    #    "hammer": True,
+    #    "extra_starting_chest": True,
+    #    "start_with_one_confetti_cannon": True,
+    #    "trap_chance": 50,
+    #    "confetti_explosiveness": ConfettiExplosiveness.range_end,
+    #    "player_sprite": PlayerSprite.option_duck,
+    #},
 }
