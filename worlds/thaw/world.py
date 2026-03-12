@@ -7,10 +7,10 @@ from worlds.AutoWorld import World
 from BaseClasses import Item, ItemClassification
 
 # Imports of your world's files must be relative.
-from . import items, locations, regions, rules, web_world
+from . import regions, rules, web_world
 from . import options as thaw_options  # rename due to a name conflict with World.options
-from .Locations import temp_location_table, THAWLocData, setup_locations, all_location_table
-from .Items import item_data_table, THAWItemData, setup_items, THAWItem, junk_weights
+from .Locations import setup_locations, all_location_table
+from .Items import item_data_table, setup_items, THAWItem, junk_weights
 
 seed_location_table: Dict[str, int]
 seed_item_table: Dict[str, int]
