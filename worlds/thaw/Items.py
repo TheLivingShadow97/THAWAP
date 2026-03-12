@@ -5,8 +5,8 @@ from typing import TYPE_CHECKING, NamedTuple, Optional, Dict, List
 from BaseClasses import Item, ItemClassification
 from .Options import EndGoal, THAWOptions
 
-if TYPE_CHECKING:
-    from .world import THAWWorld
+#if TYPE_CHECKING:
+#    from .world import THAWWorld
 
 # Every item must have a unique integer ID associated with it.
 # We will have a lookup from item name to ID here that, in world.py, we will import and bind to the world class.
@@ -97,27 +97,6 @@ class THAWItem(Item):
     #if world.random.randint(0, 99) < world.options.trap_chance:
     #    return "Math Trap"
 #    return "Confetti Cannon"
-
-def create_junk_items(world: "THAWWorld", count: int) -> List[Item]:
-    #trap_chance = world.options.TrapChance.value
-    junk_pool: List[Item] = []
-    junk_list: Dict[str, int] = {}
-    #trap_list: Dict[str, int] = {}
-
-    # This grabs all the junk items and trap items
-    for name in item_data_table.keys():
-        # Here we are getting all the junk item names and weights
-        ic = item_data_table[name].classification
-        if ic == ItemClassification.filler:
-            junk_list[name] = junk_weights.get(name)
-
-    # Where all the magic happens of adding the junk and traps randomly
-    # AP does all the weight management so we just need to worry about how many are created
-    for i in range(count):
-            junk_pool.append(world.create_item(
-                world.random.choices(list(junk_list.keys()), weights=list(junk_list.values()), k=1)[0]))
-
-    return junk_pool
 
 junk_weights = {
     "5 Bucks": 30,

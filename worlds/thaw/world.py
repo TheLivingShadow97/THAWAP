@@ -1,15 +1,16 @@
 from collections.abc import Mapping
+from itertools import count
 from typing import Any, Dict, List
 
 # Imports of base Archipelago modules must be absolute.
 from worlds.AutoWorld import World
-from BaseClasses import Item
+from BaseClasses import Item, ItemClassification
 
 # Imports of your world's files must be relative.
 from . import items, locations, regions, rules, web_world
 from . import options as thaw_options  # rename due to a name conflict with World.options
 from .Locations import temp_location_table, THAWLocData, setup_locations, all_location_table
-from .Items import item_data_table, THAWItemData, setup_items, THAWItem
+from .Items import item_data_table, THAWItemData, setup_items, THAWItem, junk_weights
 
 seed_location_table: Dict[str, int]
 seed_item_table: Dict[str, int]
@@ -88,8 +89,28 @@ class THAWWorld(World):
     # For this purpose, your world *must* have at least one infinitely repeatable item (usually filler).
     # You must override this function and return this infinitely repeatable item's name.
     # In our case, we defined a function called get_random_filler_item_name for this purpose in our items.py.
+    
     def create_junk_items(world: "THAWWorld", count: int) -> List[Item]:
-        return items.create_junk_items(world, count)
+        #trap_chance = world.options.TrapChance.value
+        junk_pool: List[Item] = []
+        junk_list: Dict[str, int] = {}
+        #trap_list: Dict[str, int] = {}
+
+        # This grabs all the junk items and trap items
+        for name in item_data_table.keys():
+        # Here we are getting all the junk item names and weights
+            ic = item_data_table[name].classification
+        if ic == ItemClassification.filler:
+            junk_list[name] = junk_weights.get(name)
+
+    # Where all the magic happens of adding the junk and traps randomly
+    # AP does all the weight management so we just need to worry about how many are created
+        for i in range(count):
+            junk_pool.append(world.create_item(
+                world.random.choices(list(junk_list.keys()), weights=list(junk_list.values()), k=1)[0]))
+
+            return junk_pool
+
 
     # There may be data that the game client will need to modify the behavior of the game.
     # This is what slot_data exists for. Upon every client connection, the slot's slot_data is sent to the client.
