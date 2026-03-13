@@ -108,9 +108,13 @@ class THAWWorld(World):
 
     def create_items(self):
         self.seed_item_table = setup_items(self.options)
-        for _ in range(THAWItemData.count in self.seed_item_table):
-            temp_item = [self.create_item(item_name) for item_name in self.seed_item_table]
-            self.multiworld.itempool += temp_item
+
+        for item_name, data in self.seed_item_table.items():
+            count = data["count"]
+
+            for _ in range(count):
+                temp_item = self.create_item(item_name)
+                self.multiworld.itempool.append(temp_item)
                 
     def create_events(world: MultiWorld, player: int, options: THAWOptions):
         smashtrex = world.get_location("Smash the T-Rex", player)
