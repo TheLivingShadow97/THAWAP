@@ -93,7 +93,7 @@ item_data_table = {
     #    return "Math Trap"
 #    return "Confetti Cannon"
 
-def setup_items(options: THAWOptions) -> Dict[str, int, int]:
+def setup_items(options: THAWOptions) -> Dict[str, THAWItemData]:
     temp_item_table = {}
     temp_item_table.update({**stats_item_table})
     temp_item_table.update({**skating_abilities_item_table})
