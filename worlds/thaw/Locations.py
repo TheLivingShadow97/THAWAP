@@ -4,12 +4,7 @@ from typing import TYPE_CHECKING, NamedTuple, Optional
 
 from BaseClasses import ItemClassification, Location
 
-from . import items
-
 from .Options import EndGoal, THAWOptions
-
-if TYPE_CHECKING:
-    from .world import THAWWorld
 
 class THAWLocation(Location):
     game = "Tony Hawk's American Wasteland"

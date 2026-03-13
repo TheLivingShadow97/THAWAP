@@ -92,15 +92,6 @@ item_data_table = {
     #    return "Math Trap"
 #    return "Confetti Cannon"
 
-junk_weights = {
-    "5 Bucks": 30,
-    "10 Bucks": 25,
-    "40 Bucks": 10,
-    "100 Bucks": 6,
-    "200 Bucks": 5,
-    "500 Bucks": 3
-}
-
 def setup_items(options: THAWOptions):
     temp_item_table = {}
     temp_item_table.update({**stats_item_table})

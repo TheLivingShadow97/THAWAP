@@ -10,7 +10,7 @@ from BaseClasses import Item, ItemClassification
 from . import Regions, Rules, web_world
 from . import Options as thaw_options  # rename due to a name conflict with World.options
 from .Locations import setup_locations, all_location_table
-from .Items import item_data_table, setup_items, THAWItem, junk_weights
+from .Items import item_data_table, setup_items, THAWItem
 from .Regions import create_regions, create_events
 
 seed_location_table: Dict[str, int]
@@ -84,7 +84,7 @@ class THAWWorld(World):
 
     # Our world class must have a static location_name_to_id and item_name_to_id defined.
     # We define these in regions.py and items.py respectively, so we just set them here.
-    location_name_to_id = {name: data.id for name, data in all_location_table.items()}
+    location_name_to_id = {name: data.ap_code for name, data in all_location_table.items()}
     item_name_to_id = item_name_to_id = {name: data.ap_code for name, data in item_data_table.items() if data.ap_code is not None}
 
     # There is always one region that the generator starts from & assumes you can always go back to.
@@ -144,6 +144,14 @@ class THAWWorld(World):
 
             return junk_pool
 
+    junk_weights = {
+    "5 Bucks": 30,
+    "10 Bucks": 25,
+    "40 Bucks": 10,
+    "100 Bucks": 6,
+    "200 Bucks": 5,
+    "500 Bucks": 3
+}
 
     # There may be data that the game client will need to modify the behavior of the game.
     # This is what slot_data exists for. Upon every client connection, the slot's slot_data is sent to the client.
