@@ -10,7 +10,7 @@ from BaseClasses import Item, ItemClassification, MultiWorld
 from . import Regions, Rules, web_world
 from . import Options as thaw_options  # rename due to a name conflict with World.options
 from .Locations import setup_locations, all_location_table
-from .Items import THAWItemData, item_data_table, setup_items, THAWItem
+from .Items import THAWItemData, item_data_table, setup_items, THAWItem, goaling_item_table 
 from .Regions import create_regions
 from .Options import EndGoal, THAWOptions
 
@@ -124,9 +124,11 @@ class THAWWorld(World):
                 temp_item = self.create_item(item_name)
                 self.multiworld.itempool.append(temp_item)
 
-        smashtrex = self.multiworld.get_location("Smash the T-Rex", self.player)
+        
         if self.options.end_goal == EndGoal.option_smash_the_t_rex:
-            smashtrex.place_locked_item("Victory")
+            smashtrex = self.multiworld.get_location("Smash the T-Rex", self.player)
+            Victory = self.create_item("Victory" in goaling_item_table)
+            smashtrex.place_locked_item(Victory)
 
 
         total_locations = len(self.multiworld.get_locations())
