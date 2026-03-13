@@ -118,9 +118,9 @@ class THAWWorld(World):
                 self.multiworld.itempool.append(temp_item)
         
         # calculate how many locations exist
-        total_locations = len(self.multiworld.get_unfilled_locations(self.player))
+        total_locations: int = len(self.multiworld.get_unfilled_locations(self.player))
         # calculate remaining slots
-        remaining_items = total_locations - len(self.multiworld.itempool)
+        remaining_items = (total_locations - len(self.multiworld.itempool))
         # fill remaining slots with junk
         if remaining_items > 0:
             self.create_filler_items(self,remaining_items)
@@ -141,7 +141,7 @@ class THAWWorld(World):
 
     
 
-    def create_filler_items(self, remaining_items: int) -> None:
+    def create_filler_items(self, remaining_items) -> None:
         junk_items = {
         ("5 Bucks", 30),
         ("10 Bucks", 25),
