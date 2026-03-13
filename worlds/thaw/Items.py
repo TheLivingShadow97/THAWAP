@@ -12,6 +12,9 @@ from .Options import EndGoal, THAWOptions
 # We will have a lookup from item name to ID here that, in world.py, we will import and bind to the world class.
 # Even if an item doesn't exist on specific options, it must be present in this lookup.
 
+class THAWItem(Item):
+    game = "Tony Hawk's American Wasteland"
+
 class THAWItemData(NamedTuple):
     ap_code: Optional[int]
     classification: ItemClassification = ItemClassification.progression_deprioritized_skip_balancing
@@ -73,15 +76,6 @@ item_data_table = {
     **cash_item_table,
     **goaling_item_table
 }
-
-# Items should have a defined default classification.
-# In our case, we will make a dictionary from item name to classification.
-
-# Each Item instance must correctly report the "game" it belongs to.
-# To make this simple, it is common practice to subclass the basic Item class and override the "game" field.
-class THAWItem(Item):
-    game = "Tony Hawk's American Wasteland"
-
 
 # Ontop of our regular itempool, our world must be able to create arbitrary amounts of filler as requested by core.
 # To do this, it must define a function called world.get_filler_item_name(), which we will define in world.py later.

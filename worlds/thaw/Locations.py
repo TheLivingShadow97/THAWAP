@@ -11,6 +11,9 @@ from .Options import EndGoal, THAWOptions
 if TYPE_CHECKING:
     from .world import THAWWorld
 
+class THAWLocation(Location):
+    game = "Tony Hawk's American Wasteland"
+
 class THAWLocData(NamedTuple):
     ap_code: Optional[int]
     region: Optional[str]
@@ -245,11 +248,6 @@ all_location_table = {
 # We will have a lookup from location name to ID here that, in world.py, we will import and bind to the world class.
 # Even if a location doesn't exist on specific options, it must be present in this lookup.
 # Location IDs don't need to be sequential, as long as they're unique and greater than 0.
-
-# Each Location instance must correctly report the "game" it belongs to.
-# To make this simple, it is common practice to subclass the basic Location class and override the "game" field.
-class THAWLocation(Location):
-    game = "Tony Hawk's American Wasteland"
 
 def setup_locations(options: THAWOptions):
     temp_location_table = {}

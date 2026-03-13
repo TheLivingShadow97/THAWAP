@@ -7,10 +7,11 @@ from worlds.AutoWorld import World
 from BaseClasses import Item, ItemClassification
 
 # Imports of your world's files must be relative.
-from . import regions, rules, web_world
-from . import options as thaw_options  # rename due to a name conflict with World.options
+from . import Regions, Rules, web_world
+from . import Options as thaw_options  # rename due to a name conflict with World.options
 from .Locations import setup_locations, all_location_table
 from .Items import item_data_table, setup_items, THAWItem, junk_weights
+from .Regions import create_regions, create_events
 
 seed_location_table: Dict[str, int]
 seed_item_table: Dict[str, int]
@@ -50,10 +51,41 @@ class THAWWorld(World):
     seed_location_table: Dict[str, int]
     seed_item_table: Dict[str, int]
 
+    location_name_groups = {
+        "Hollywood": {name for name, data in all_location_table.items()
+                                   if data.region == "Hollywood"},
+        "Beverly Hills": {name for name, data in all_location_table.items() if data.region == "Beverly Hills"},
+        "Downtown": {name for name, data in all_location_table.items() if data.region == "Downtown"},
+        "Santa Monica": {name for name, data in all_location_table.items()
+                                      if data.region == "Santa Monica"},
+        "East LA": {name for name, data in all_location_table.items()
+                                    if data.region == "East LA"},
+        "Skate Ranch": {name for name, data in all_location_table.items() if data.region == "Skate Ranch"},
+        "Beverly Hills Stage 2": {name for name, data in all_location_table.items()
+                                 if data.region == "Beverly Hills Stage 2"},
+        "Hollywood Stage 2": {name for name, data in all_location_table.items() if data.region == "Hollywood Stage 2"},
+        "Downtown Stage 2": {name for name, data in all_location_table.items() if data.region == "Downtown Stage 2"},
+        "Vans Park": {name for name, data in all_location_table.items() if data.region == "Vans Park"},
+        "Santa Monica Stage 2": {name for name, data in all_location_table.items() if data.region == "Santa Monica Stage 2"},
+        "Oil Rig": {name for name, data in all_location_table.items() if data.region == "Oil Rig"},
+        "Downtown Stage 3": {name for name, data in all_location_table.items()
+                                      if data.region == "Downtown Stage 3"},
+        "East LA Stage 2": {name for name, data in all_location_table.items() if data.region == "East LA Stage 2"},
+        "Skate Ranch Stage 2": {name for name, data in all_location_table.items() if data.region == "Skate Ranch Stage 2"},
+        "Beverly Hills Stage 3": {name for name, data in all_location_table.items()
+                                    if data.region == "Beverly Hills Stage 3"},
+        "Hollywood Stage 3": {name for name, data in all_location_table.items()
+                                           if data.region == "Hollywood Stage 3"},
+        "Downtown Stage 4": {name for name, data in all_location_table.items() if data.region == "Downtown Stage 4"},
+        "East LA Stage 3": {name for name, data in all_location_table.items() if data.region == "East LA Stage 3"},
+        "Casino": {name for name, data in all_location_table.items()
+                                  if data.region == "Casino"},
+    }
+
     # Our world class must have a static location_name_to_id and item_name_to_id defined.
     # We define these in regions.py and items.py respectively, so we just set them here.
     location_name_to_id = {name: data.id for name, data in all_location_table.items()}
-    item_name_to_id = item_name_to_id = {name: data.code for name, data in item_data_table.items() if data.code is not None}
+    item_name_to_id = item_name_to_id = {name: data.ap_code for name, data in item_data_table.items() if data.ap_code is not None}
 
     # There is always one region that the generator starts from & assumes you can always go back to.
     # This defaults to "Menu", but you can change it by overriding origin_region_name.
@@ -64,22 +96,23 @@ class THAWWorld(World):
     # For better structure and readability, we put each of these in their own file.
     def create_regions(self):
         self.seed_location_table = setup_locations(self.options)
-        regions.create_and_connect_regions(self.multiworld, self.player, self.seed_location_table)
+        create_regions(self.multiworld, self.player, self.seed_location_table)
+        create_events(self.multiworld, self.player)
 
     def create_item(self, name: str) -> Item:
         data = item_data_table[name]
-        item = THAWItem(name, data.classification, data.code, self.player)
+        item = THAWItem(name, data.classification, data.ap_code, self.player)
         return item
     
     def set_rules(self) -> None:
-        rules.set_all_rules(self)
+        Rules.set_all_rules(self)
 
     def create_items(self):
         self.seed_item_table = setup_items(self.options)
         self.multiworld.itempool += [self.create_item(item_name) for item_name in self.seed_item_table]
 
     def create_events(self):
-        regions.create_events(self.multiworld, self.player)
+        Regions.create_events(self.multiworld, self.player)
 
     # Our world class must also have a create_item function that can create any one of our items by name at any time.
     # We also put this in a different file, the same one that create_items is in.
