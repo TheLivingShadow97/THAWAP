@@ -112,7 +112,7 @@ class THAWWorld(World):
         self.multiworld.itempool += [self.create_item(item_name) for item_name in self.seed_item_table]
 
     def create_events(self):
-        Regions.create_events(self.multiworld, self.player)
+        Regions.create_events(self.multiworld, self.player, self.options)
 
     # Our world class must also have a create_item function that can create any one of our items by name at any time.
     # We also put this in a different file, the same one that create_items is in.
