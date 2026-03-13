@@ -110,7 +110,7 @@ class THAWWorld(World):
         self.seed_item_table = setup_items(self.options)
 
         for item_name, data in self.seed_item_table.items():
-            count = data["count"]
+            count = data.count
 
             for _ in range(count):
                 temp_item = self.create_item(item_name)
