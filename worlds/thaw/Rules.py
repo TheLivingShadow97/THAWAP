@@ -77,8 +77,6 @@ def set_all_location_rules(world: "THAWWorld"):
              lambda state: state.has("Skate Ability: Manual") and state.has("Skate Ability: Revert") and state.has("Skate Ability: Caveman")) 
 
     # Hollywood Gaps
-    add_rule(world.multiworld.get_location("", player),
-             lambda state: state.has(""))  
     add_rule(world.multiworld.get_location("HW Gap: El Teniente Spine", player),
              lambda state: state.has("Skate Ability: Spine Transfer/Acid Drop/Bank Drop"))
     add_rule(world.multiworld.get_location("HW Gap: Pin Plant", player),
