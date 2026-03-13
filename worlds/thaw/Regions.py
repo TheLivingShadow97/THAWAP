@@ -18,6 +18,7 @@ from .Locations import THAWLocation
 # Every location must be inside a region, and you must have at least one region.
 # This is why we create regions first, and then later we create the locations (in locations.py).
 
+#opening regions
 thaw_stage1_regions = [
     "Hollywood",
     "Beverly Hills",
@@ -26,6 +27,7 @@ thaw_stage1_regions = [
     "East LA"
 ]
 
+#get parts for the skate ranch and win the contest
 thaw_stage2_regions = [
     "Skate Ranch",
     "Beverly Hills Stage 2",
@@ -34,30 +36,37 @@ thaw_stage2_regions = [
     "Vans Park"
 ]
 
+#go to the beach
 thaw_stage3_regions = [
     "Santa Monica Stage 2"
 ]
 
+#get the crane
 thaw_stage4_regions = [
     "Oil Rig"
 ]
 
+#prove yourself to hector
 thaw_stage5_regions = [
     "Downtown Stage 3"
 ]
 
+#rescue Boone and get some parts
 thaw_stage6_regions = [
     "East LA Stage 2",
     "Skate Ranch Stage 2"
 ]
 
+#gather skaters to save green pipes point
 thaw_stage7_regions = [
     "Beverly Hills Stage 3",
     "Hollywood Stage 3",
     "Downtown Stage 4",
+    "Santa Monica Stage 3",
     "East LA Stage 3",
 ]
 
+#get parts for the skate ranch and escape the cops to save gpp 
 thaw_stage8_regions = [
     "Casino"
 ]
