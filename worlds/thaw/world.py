@@ -107,12 +107,12 @@ class THAWWorld(World):
     def set_rules(self) -> None:
         Rules.set_all_rules(self)
         Rules.set_completion_condition(self)
-        self.create_events
+        #self.create_events
 
-    def create_events(self):
-        smashtrex = self.multiworld.get_location("Smash the T-Rex", self.player)
-        if self.options.end_goal == EndGoal.option_smash_the_t_rex:
-            smashtrex.place_locked_item("Victory")
+    #def create_events(self):
+        #smashtrex = self.multiworld.get_location("Smash the T-Rex", self.player)
+        #if self.options.end_goal == EndGoal.option_smash_the_t_rex:
+        #    smashtrex.place_locked_item("Victory")
 
     def create_items(self) -> None:
         self.seed_item_table = setup_items(self.options)
@@ -123,6 +123,11 @@ class THAWWorld(World):
             for _ in range(count):
                 temp_item = self.create_item(item_name)
                 self.multiworld.itempool.append(temp_item)
+
+        smashtrex = self.multiworld.get_location("Smash the T-Rex", self.player)
+        if self.options.end_goal == EndGoal.option_smash_the_t_rex:
+            smashtrex.place_locked_item("Victory")
+
 
         total_locations = len(self.multiworld.get_locations())
         remaining_items = total_locations - len(self.multiworld.itempool)
