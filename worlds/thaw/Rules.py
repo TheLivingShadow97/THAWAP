@@ -107,7 +107,7 @@ def set_all_location_rules(world: "THAWWorld"):
     # Victory Goal Stuff
     if options.end_goal == EndGoal.option_smash_the_t_rex:
         add_rule(world.multiworld.get_location("Smash the T-Rex", player),
-                 lambda state: state.has("Skate Ability: Manual", player) and state.has("Skate Ability: Revert") and state.has("Skate Ability: Caveman", player))
+                 lambda state: state.has("Skate Ability: Manual", player) and state.has("Skate Ability: Revert", player) and state.has("Skate Ability: Caveman", player))
 
 def set_completion_condition(world: THAWWorld) -> None:
     # In our case, we went for the Victory event design pattern (see create_events() in locations.py).
