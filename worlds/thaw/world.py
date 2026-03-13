@@ -139,6 +139,14 @@ class THAWWorld(World):
     def create_junk_items(world: "THAWWorld", count: int) -> List[Item]:
         junk_pool: List[Item] = []
         junk_list: Dict[str, int] = {}
+        junk_weights = {
+        "5 Bucks": 30,
+        "10 Bucks": 25,
+        "40 Bucks": 10,
+        "100 Bucks": 6,
+        "200 Bucks": 5,
+        "500 Bucks": 3
+        }
 
         # Collect all filler items and their weights
         for name, data in item_data_table.items():
@@ -167,12 +175,3 @@ class THAWWorld(World):
         return self.options.as_dict(
             "end_goal"
         )
-
-junk_weights = {
-    "5 Bucks": 30,
-    "10 Bucks": 25,
-    "40 Bucks": 10,
-    "100 Bucks": 6,
-    "200 Bucks": 5,
-    "500 Bucks": 3
-}
