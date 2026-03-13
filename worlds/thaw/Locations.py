@@ -246,5 +246,6 @@ all_location_table = {
 
 def setup_locations(options: THAWOptions):
     temp_location_table = {}
+    temp_location_table.update({**endgoal_t_rex_locations})
     temp_location_table.update({**THAW_hollywood_locations})
     return temp_location_table
