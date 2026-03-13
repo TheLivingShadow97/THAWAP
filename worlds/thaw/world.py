@@ -123,7 +123,8 @@ class THAWWorld(World):
         remaining = total_locations - len(self.multiworld.itempool)
         # fill remaining with junk
         if remaining > 0:
-            self.multiworld.itempool += self.create_filler_items(remaining)
+            self.create_filler_items(remaining)
+            self.multiworld.itempool += self.filler_items
                 
     def create_events(world: MultiWorld, player: int, options: THAWOptions):
         smashtrex = world.get_location("Smash the T-Rex", player)
@@ -152,12 +153,9 @@ class THAWWorld(World):
         filler_items: List[Item] = []
 
         for _ in range(count):
-            item_name = world.random.choices(
-                list(filler_items.keys()),
-                weights=list(filler_items.values()),
-                k=1
-            )[0]
+            names, weights = zip(*filler_items.items())
 
+            item_name = world.random.choices(names, weights=weights, k=1)[0]
             filler_items.append(world.create_item(item_name))
 
         return filler_items
