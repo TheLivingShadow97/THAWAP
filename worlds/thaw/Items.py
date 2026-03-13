@@ -75,7 +75,7 @@ item_data_table = {
     **stats_item_table,
     **skating_abilities_item_table,
     **cash_item_table,
-    #**goaling_item_table
+    **goaling_item_table
 }
 
 # Ontop of our regular itempool, our world must be able to create arbitrary amounts of filler as requested by core.
