@@ -107,6 +107,11 @@ class THAWWorld(World):
     def set_rules(self) -> None:
         Rules.set_all_rules(self)
 
+    def create_events(world: MultiWorld, player: int, options: THAWOptions):
+        smashtrex = world.get_location("Smash the T-Rex", player)
+        if options.end_goal == EndGoal.option_smash_the_t_rex:
+            smashtrex.place_locked_item("Victory")
+
     def create_items(self) -> None:
         self.seed_item_table = setup_items(self.options)
 
@@ -122,11 +127,6 @@ class THAWWorld(World):
 
         if remaining_items > 0:
             self.create_filler_items(remaining_items)
-                
-    def create_events(world: MultiWorld, player: int, options: THAWOptions):
-        smashtrex = world.get_location("Smash the T-Rex", player)
-        if options.end_goal == EndGoal.option_smash_the_t_rex:
-            smashtrex.place_locked_item("Victory")
 
     # Our world class must also have a create_item function that can create any one of our items by name at any time.
     # We also put this in a different file, the same one that create_items is in.
