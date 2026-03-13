@@ -107,7 +107,7 @@ def set_all_location_rules(world: "THAWWorld"):
              lambda state: state.has_all("Skate Ability: Spine Transfer/Acid Drop/Bank Drop", "Skate Ability: Sticker Slap/Wall Plant/Vert Wall Plant", "Skate Ability: Manual") and state.has("Progressive Speed Stat", world.player, 1) and state.has("Progressive Ollie Stat", world.player, 4)) 
 
     # Victory Goal Stuff
-    if options.EndGoal == EndGoal.option_smash_the_t_rex:
+    if options.end_goal == EndGoal.option_smash_the_t_rex:
         add_rule(world.multiworld.get_location("Smash the T-Rex", player),
                  lambda state: state.has("Skate Ability: Manual") and state.has("Skate Ability: Revert") and state.has("Skate Ability: Caveman"))
 
