@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING, NamedTuple, Optional, Dict, List
 
-from BaseClasses import Item, ItemClassification
+from BaseClasses import Item, ItemClassification, Multiworld
 from .Options import EndGoal, THAWOptions
 
 #if TYPE_CHECKING:
@@ -71,7 +71,7 @@ goaling_item_table: Dict[str, THAWItemData] = {
 }
 
 item_data_table = {
-    **stats_item_table,
+    #**stats_item_table,
     **skating_abilities_item_table,
     **cash_item_table,
     **goaling_item_table
@@ -92,9 +92,21 @@ item_data_table = {
     #    return "Math Trap"
 #    return "Confetti Cannon"
 
-def setup_items(options: THAWOptions):
+statlist = {}
+
+def create_multiple_items(world: Multiworld, name: str, count: int,
+                          item_type: ItemClassification = ItemClassification.progression) -> Dict[str, int]:
+    data = stats_item_table[name]
+    statlist: Dict[str, int] = {}
+
+    for i in range(count):
+        statlist += [THAWItem(name, item_type, data.ap_code, world.player)]
+
+    return statlist
+
+def setup_items(options: THAWOptions) -> Dict[str, int]:
     temp_item_table = {}
-    temp_item_table.update({**stats_item_table})
+    temp_item_table.update({**statlist})
     temp_item_table.update({**skating_abilities_item_table})
     temp_item_table.update({**goaling_item_table})
     return temp_item_table
