@@ -141,8 +141,7 @@ class THAWWorld(World):
 
     
 
-    def create_filler_items(self, remaining_items: int, world:MultiWorld) -> List[Item]:
-        filler_items: List[Item] = []
+    def create_filler_items(self, remaining_items: int, world:MultiWorld):
         junk_items = {
         ("5 Bucks", 30),
         ("10 Bucks", 25),
