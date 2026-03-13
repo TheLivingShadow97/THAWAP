@@ -132,7 +132,7 @@ class THAWWorld(World):
         }
 
         for _ in range(remaining_items):
-            names, weights = zip(*junk_items.items())
+            names, weights = zip(*junk_items())
             item_name = self.random.choices(names, weights=weights, k=1)[0]
             junk_filler = (self.create_item(item_name))
             self.multiworld.itempool.append(junk_filler)
