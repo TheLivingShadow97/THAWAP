@@ -2,8 +2,8 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING, NamedTuple, Optional, Dict, List
 
-from BaseClasses import Item, ItemClassification, Multiworld
-from .Options import EndGoal, THAWOptions
+from BaseClasses import Item, ItemClassification, MultiWorld
+from .Options import THAWOptions
 
 #if TYPE_CHECKING:
 #    from .world import THAWWorld
@@ -94,7 +94,7 @@ item_data_table = {
 
 statlist = {}
 
-def create_multiple_items(world: Multiworld, name: str, count: int,
+def create_multiple_items(world: MultiWorld, name: str, count: int,
                           item_type: ItemClassification = ItemClassification.progression) -> Dict[str, int]:
     data = stats_item_table[name]
     statlist: Dict[str, int] = {}
