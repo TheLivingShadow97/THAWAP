@@ -12,7 +12,7 @@ from . import Options as thaw_options  # rename due to a name conflict with Worl
 from .Locations import setup_locations, all_location_table
 from .Items import item_data_table, setup_items, THAWItem
 from .Regions import create_regions
-from .Options import EndGoal, THAWOptions, end_goal
+from .Options import EndGoal, THAWOptions
 
 seed_location_table: Dict[str, int]
 seed_item_table: Dict[str, int]
