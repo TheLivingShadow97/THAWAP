@@ -4,14 +4,15 @@ from typing import Any, Dict, List
 
 # Imports of base Archipelago modules must be absolute.
 from worlds.AutoWorld import World
-from BaseClasses import Item, ItemClassification
+from BaseClasses import Item, ItemClassification, MultiWorld
 
 # Imports of your world's files must be relative.
 from . import Regions, Rules, web_world
 from . import Options as thaw_options  # rename due to a name conflict with World.options
 from .Locations import setup_locations, all_location_table
 from .Items import item_data_table, setup_items, THAWItem
-from .Regions import create_regions, create_events
+from .Regions import create_regions
+from .Options import EndGoal, THAWOptions, end_goal
 
 seed_location_table: Dict[str, int]
 seed_item_table: Dict[str, int]
@@ -97,7 +98,6 @@ class THAWWorld(World):
     def create_regions(self):
         self.seed_location_table = setup_locations(self.options)
         create_regions(self.multiworld, self.player, self.seed_location_table)
-        create_events(self.multiworld, self.player)
 
     def create_item(self, name: str) -> Item:
         data = item_data_table[name]
@@ -111,8 +111,10 @@ class THAWWorld(World):
         self.seed_item_table = setup_items(self.options)
         self.multiworld.itempool += [self.create_item(item_name) for item_name in self.seed_item_table]
 
-    def create_events(self):
-        Regions.create_events(self.multiworld, self.player, self.options)
+    def create_events(world: MultiWorld, player: int, options: THAWOptions):
+        smashtrex = world.get_location("Smash the T-Rex", player)
+        if options.end_goal == EndGoal.option_smash_the_t_rex:
+            smashtrex.place_locked_item("Victory")
 
     # Our world class must also have a create_item function that can create any one of our items by name at any time.
     # We also put this in a different file, the same one that create_items is in.

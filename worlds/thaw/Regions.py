@@ -128,10 +128,7 @@ def create_regions_and_locations(name: str, player: int, world: MultiWorld, seed
     world.regions.append(region)
     return region
 
-def create_events(world: MultiWorld, player: int, options: THAWOptions):
-    smashtrex = world.get_location("Smash the T-Rex", player)
-    if options.end_goal == EndGoal.option_smash_the_t_rex:
-        smashtrex.place_locked_item("Victory")
+
 
 #def create_events(multiworld: THAWWorld)-> None:
     # If your world has events, you can create them here.
