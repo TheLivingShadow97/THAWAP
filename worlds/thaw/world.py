@@ -1,5 +1,4 @@
 from collections.abc import Mapping
-from itertools import count
 from typing import Any, Dict, List
 
 # Imports of base Archipelago modules must be absolute.
@@ -50,7 +49,7 @@ class THAWWorld(World):
     options: thaw_options.THAWOptions  # Common mistake: This has to be a colon (:), not an equals sign (=).
 
     seed_location_table: Dict[str, int]
-    seed_item_table: Dict[str, int]
+    seed_item_table: Dict[str, int, int]
 
     location_name_groups = {
         "Hollywood": {name for name, data in all_location_table.items()
