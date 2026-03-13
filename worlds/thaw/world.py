@@ -1,4 +1,5 @@
 from collections.abc import Mapping
+from itertools import count
 from typing import Any, Dict, List
 
 # Imports of base Archipelago modules must be absolute.
@@ -131,27 +132,29 @@ class THAWWorld(World):
     # For this purpose, your world *must* have at least one infinitely repeatable item (usually filler).
     # You must override this function and return this infinitely repeatable item's name.
     # In our case, we defined a function called get_random_filler_item_name for this purpose in our items.py.
-    
+
     def create_junk_items(world: "THAWWorld", count: int) -> List[Item]:
-        #trap_chance = world.options.TrapChance.value
         junk_pool: List[Item] = []
         junk_list: Dict[str, int] = {}
-        #trap_list: Dict[str, int] = {}
 
-        # This grabs all the junk items and trap items
-        for name in item_data_table.keys():
-        # Here we are getting all the junk item names and weights
-            ic = item_data_table[name].classification
-        if ic == ItemClassification.filler:
-            junk_list[name] = junk_weights.get(name)
+        # Collect all filler items and their weights
+        for name, data in item_data_table.items():
+            if data.classification == ItemClassification.filler:
+                weight = junk_weights.get(name)
+                if weight is not None:
+                    junk_list[name] = weight
 
-    # Where all the magic happens of adding the junk and traps randomly
-    # AP does all the weight management so we just need to worry about how many are created
+        # Randomly generate junk items using weights
         for _ in range(count):
-            junk_pool.append(world.create_item(
-                world.random.choices(list(junk_list.keys()), weights=list(junk_list.values()), k=1)[0]))
+            item_name = world.random.choices(
+                list(junk_list.keys()),
+                weights=list(junk_list.values()),
+                k=1
+            )[0]
 
-            return junk_pool
+            junk_pool.append(world.create_item(item_name))
+
+        return junk_pool
 
     # There may be data that the game client will need to modify the behavior of the game.
     # This is what slot_data exists for. Upon every client connection, the slot's slot_data is sent to the client.
