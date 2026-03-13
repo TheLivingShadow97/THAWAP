@@ -117,25 +117,11 @@ class THAWWorld(World):
                 temp_item = self.create_item(item_name)
                 self.multiworld.itempool.append(temp_item)
 
-        # calculate how many locations exist
-        total_locations: int = len(self.multiworld.get_unfilled_locations(self.player))
-        # calculate remaining slots
-        remaining_items = (total_locations - len(self.multiworld.itempool))
-        # fill remaining slots with junk
-        junk_items = {
-        ("5 Bucks", 30),
-        ("10 Bucks", 25),
-        ("40 Bucks", 10),
-        ("100 Bucks", 6),
-        ("200 Bucks", 5),
-        ("500 Bucks", 3)
-        }
+        total_locations = len(self.multiworld.get_locations())
+        remaining_items = total_locations - len(self.multiworld.itempool)
 
-        for _ in range(remaining_items):
-            names, weights = zip(*junk_items())
-            item_name = self.random.choices(names, weights=weights, k=1)[0]
-            junk_filler = (self.create_item(item_name))
-            self.multiworld.itempool.append(junk_filler)
+        if remaining_items > 0:
+            self.create_filler_items(remaining_items)
                 
     def create_events(world: MultiWorld, player: int, options: THAWOptions):
         smashtrex = world.get_location("Smash the T-Rex", player)
@@ -151,7 +137,21 @@ class THAWWorld(World):
     # You must override this function and return this infinitely repeatable item's name.
     # In our case, we defined a function called get_random_filler_item_name for this purpose in our items.py.
 
-    
+    def create_filler_items(self, remaining_items: int):
+        filler_items = {
+            "5 Bucks": 30,
+            "10 Bucks": 25,
+            "40 Bucks": 10,
+            "100 Bucks": 6,
+            "200 Bucks": 5,
+            "500 Bucks": 3
+        }
+
+        names, weights = zip(*filler_items.items())
+
+        for _ in range(remaining_items):
+            item_name = self.random.choices(names, weights=weights, k=1)[0]
+            self.multiworld.itempool.append(self.create_item(item_name))
 
     #def create_filler_items(self, remaining_items) -> None:
 
