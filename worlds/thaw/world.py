@@ -153,27 +153,7 @@ class THAWWorld(World):
 
     
 
-    def create_filler_items(self, remaining_items) -> None:
-        # calculate how many locations exist
-        total_locations: int = len(self.multiworld.get_unfilled_locations(self.player))
-        # calculate remaining slots
-        remaining_items = (total_locations - len(self.multiworld.itempool))
-        # fill remaining slots with junk
-        junk_items = {
-        ("5 Bucks", 30),
-        ("10 Bucks", 25),
-        ("40 Bucks", 10),
-        ("100 Bucks", 6),
-        ("200 Bucks", 5),
-        ("500 Bucks", 3)
-        }
-
-        for _ in range(remaining_items):
-            names, weights = zip(*junk_items.items())
-            item_name = self.random.choices(names, weights=weights, k=1)[0]
-            junk_filler = (self.create_item(item_name))
-            self.multiworld.itempool.append(junk_filler)
-        
+    #def create_filler_items(self, remaining_items) -> None:
 
     # There may be data that the game client will need to modify the behavior of the game.
     # This is what slot_data exists for. Upon every client connection, the slot's slot_data is sent to the client.
