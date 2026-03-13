@@ -96,9 +96,9 @@ def set_all_location_rules(world: "THAWWorld"):
     add_rule(world.multiworld.get_location("HW Gap: Romper Rail", player),
              lambda state: state.has("Skate Ability: Sticker Slap/Wall Plant/Vert Wall Plant", player))
     add_rule(world.multiworld.get_location("HW Gap: FireEscape Level4", player),
-             lambda state: state.has_all("Skate Ability: Spine Transfer/Acid Drop/Bank Drop", "Skate Ability: Caveman", "Skate Ability: Wall Run", player))
+             lambda state: state.has_all(("Skate Ability: Spine Transfer/Acid Drop/Bank Drop", "Skate Ability: Caveman", "Skate Ability: Wall Run"), player))
     add_rule(world.multiworld.get_location("HW Gap: Goat Whackin'", player),
-             lambda state: state.has_all("Skate Ability: Sticker Slap/Wall Plant/Vert Wall Plant", player))
+             lambda state: state.has("Skate Ability: Sticker Slap/Wall Plant/Vert Wall Plant", player))
     add_rule(world.multiworld.get_location("HW Gap: FireEscape Level5", player),
              lambda state: state.has_all(("Skate Ability: Spine Transfer/Acid Drop/Bank Drop", "Skate Ability: Caveman", "Skate Ability: Wall Run"), player) and state.has("Progressive Speed Stat", world.player, 3))
     add_rule(world.multiworld.get_location("HW Gap: Hollywood High Line", player),
