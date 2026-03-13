@@ -113,7 +113,7 @@ def create_regions_and_locations(name: str, player: int, world: MultiWorld, seed
 
     for (key, data) in seed_locations.items():
         if data.region == name:
-            location = THAWLocation(player, key, data.id, region)
+            location = THAWLocation(player, key, data.ap_code, region)
             region.locations.append(location)
 
     world.regions.append(region)
