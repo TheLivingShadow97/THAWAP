@@ -120,7 +120,8 @@ class THAWWorld(World):
         number_of_items = len(self.multiworld.itempool)
         number_of_unfilled_locations = len(self.multiworld.get_unfilled_locations(self.player))
         needed_number_of_filler_items = number_of_unfilled_locations - number_of_items
-        self.multiworld.itempool += [self.create_junk_items(needed_number_of_filler_items)]
+        if needed_number_of_filler_items > 0:
+            self.multiworld.itempool += [self.create_junk_items(self,needed_number_of_filler_items)]
                 
     def create_events(world: MultiWorld, player: int, options: THAWOptions):
         smashtrex = world.get_location("Smash the T-Rex", player)
