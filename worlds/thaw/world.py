@@ -10,7 +10,7 @@ from BaseClasses import Item, ItemClassification, MultiWorld
 from . import Regions, Rules, web_world
 from . import Options as thaw_options  # rename due to a name conflict with World.options
 from .Locations import setup_locations, all_location_table
-from .Items import item_data_table, setup_items, THAWItem
+from .Items import THAWItemData, item_data_table, setup_items, THAWItem
 from .Regions import create_regions
 from .Options import EndGoal, THAWOptions
 
@@ -109,7 +109,8 @@ class THAWWorld(World):
 
     def create_items(self):
         self.seed_item_table = setup_items(self.options)
-        self.multiworld.itempool += [self.create_item(item_name) for item_name in self.seed_item_table]
+        for _ in range(THAWItemData.count):
+            self.multiworld.itempool += [self.create_item(item_name) for item_name in self.seed_item_table]
 
     def create_events(world: MultiWorld, player: int, options: THAWOptions):
         smashtrex = world.get_location("Smash the T-Rex", player)
