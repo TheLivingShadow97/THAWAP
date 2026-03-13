@@ -115,6 +115,8 @@ class THAWWorld(World):
             for _ in range(count):
                 temp_item = self.create_item(item_name)
                 self.multiworld.itempool.append(temp_item)
+
+        self.create_junk_items
                 
     def create_events(world: MultiWorld, player: int, options: THAWOptions):
         smashtrex = world.get_location("Smash the T-Rex", player)
@@ -145,7 +147,7 @@ class THAWWorld(World):
 
     # Where all the magic happens of adding the junk and traps randomly
     # AP does all the weight management so we just need to worry about how many are created
-        for i in range(count):
+        for _ in range(count):
             junk_pool.append(world.create_item(
                 world.random.choices(list(junk_list.keys()), weights=list(junk_list.values()), k=1)[0]))
 
