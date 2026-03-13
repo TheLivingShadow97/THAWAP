@@ -109,7 +109,7 @@ class THAWWorld(World):
 
     def create_events(world: MultiWorld, player: int, options: THAWOptions):
         smashtrex = world.get_location("Smash the T-Rex", player)
-        if options.end_goal == EndGoal.option_smash_the_t_rex:
+        if options.end_goal.option_smash_the_t_rex == True:
             smashtrex.place_locked_item("Victory")
 
     def create_items(self) -> None:
