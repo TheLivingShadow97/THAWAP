@@ -144,15 +144,6 @@ class THAWWorld(World):
 
             return junk_pool
 
-    junk_weights = {
-    "5 Bucks": 30,
-    "10 Bucks": 25,
-    "40 Bucks": 10,
-    "100 Bucks": 6,
-    "200 Bucks": 5,
-    "500 Bucks": 3
-}
-
     # There may be data that the game client will need to modify the behavior of the game.
     # This is what slot_data exists for. Upon every client connection, the slot's slot_data is sent to the client.
     # slot_data is just a dictionary using basic types, that will be converted to json when sent to the client.
@@ -161,3 +152,12 @@ class THAWWorld(World):
         return self.options.as_dict(
             "end_goal"
         )
+
+junk_weights = {
+    "5 Bucks": 30,
+    "10 Bucks": 25,
+    "40 Bucks": 10,
+    "100 Bucks": 6,
+    "200 Bucks": 5,
+    "500 Bucks": 3
+}
