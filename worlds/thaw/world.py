@@ -124,7 +124,6 @@ class THAWWorld(World):
         # fill remaining with junk
         if remaining > 0:
             self.create_filler_items(remaining)
-            self.multiworld.itempool += self.filler_items
                 
     def create_events(world: MultiWorld, player: int, options: THAWOptions):
         smashtrex = world.get_location("Smash the T-Rex", player)
@@ -140,7 +139,9 @@ class THAWWorld(World):
     # You must override this function and return this infinitely repeatable item's name.
     # In our case, we defined a function called get_random_filler_item_name for this purpose in our items.py.
 
-    def create_filler_items(world: "THAWWorld", count: int) -> List[Item]:
+    
+
+    def create_filler_items(self, world: "THAWWorld", count: int) -> List[Item]:
         filler_items: List[Item] = []
         junk_items = {
         "5 Bucks": 30,
@@ -157,7 +158,9 @@ class THAWWorld(World):
             item_name = world.random.choices(names, weights=weights, k=1)[0]
             filler_items.append(world.create_item(item_name))
 
-        return filler_items
+            return filler_items
+        self.multiworld.itempool.append(filler_items)
+        
 
     # There may be data that the game client will need to modify the behavior of the game.
     # This is what slot_data exists for. Upon every client connection, the slot's slot_data is sent to the client.
