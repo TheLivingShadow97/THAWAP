@@ -107,7 +107,7 @@ class THAWWorld(World):
     def set_rules(self) -> None:
         Rules.set_all_rules(self)
 
-    def create_items(self):
+    def create_items(self) -> None:
         self.seed_item_table = setup_items(self.options)
 
         for item_name, data in self.seed_item_table.items():
@@ -141,7 +141,7 @@ class THAWWorld(World):
 
     
 
-    def create_filler_items(self, remaining_items: int, world) -> List[Item]:
+    def create_filler_items(self, remaining_items: int, world: MultiWorld) -> List[Item]:
         filler_items: List[Item] = []
         junk_items = {
         ("5 Bucks", 30),
