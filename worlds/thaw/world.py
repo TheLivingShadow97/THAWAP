@@ -140,7 +140,9 @@ class THAWWorld(World):
     # You must override this function and return this infinitely repeatable item's name.
     # In our case, we defined a function called get_random_filler_item_name for this purpose in our items.py.
 
-    filler_items = {
+    def create_filler_items(world: "THAWWorld", count: int) -> List[Item]:
+        filler_items: List[Item] = []
+        junk_items = {
         "5 Bucks": 30,
         "10 Bucks": 25,
         "40 Bucks": 10,
@@ -149,11 +151,8 @@ class THAWWorld(World):
         "500 Bucks": 3
         }
 
-    def create_filler_items(world: "THAWWorld", count: int) -> List[Item]:
-        filler_items: List[Item] = []
-
         for _ in range(count):
-            names, weights = zip(*filler_items.items())
+            names, weights = zip(*junk_items.items())
 
             item_name = world.random.choices(names, weights=weights, k=1)[0]
             filler_items.append(world.create_item(item_name))
