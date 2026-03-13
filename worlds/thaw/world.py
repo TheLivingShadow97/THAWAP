@@ -156,7 +156,7 @@ class THAWWorld(World):
             names, weights = zip(*junk_items.items())
 
             item_name = world.random.choices(names, weights=weights, k=1)[0]
-            filler_items.append(world.create_item(item_name))
+            filler_items.append(self.create_item(item_name))
 
             return filler_items
         self.multiworld.itempool.append(filler_items)
