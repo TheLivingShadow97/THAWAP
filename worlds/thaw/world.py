@@ -117,11 +117,13 @@ class THAWWorld(World):
                 temp_item = self.create_item(item_name)
                 self.multiworld.itempool.append(temp_item)
         
-        number_of_items = len(self.multiworld.itempool)
-        number_of_unfilled_locations = len(self.multiworld.get_unfilled_locations(self.player))
-        needed_number_of_filler_items = number_of_unfilled_locations - number_of_items
-        if needed_number_of_filler_items > 0:
-            self.multiworld.itempool += [self.create_junk_items(self,needed_number_of_filler_items)]
+        # calculate how many locations exist
+        total_locations = len(self.multiworld.get_unfilled_locations(self.player))
+        # calculate remaining slots
+        remaining = total_locations - len(self.multiworld.itempool)
+        # fill remaining with junk
+        if remaining > 0:
+            self.multiworld.itempool += self.create_filler_items(remaining)
                 
     def create_events(world: MultiWorld, player: int, options: THAWOptions):
         smashtrex = world.get_location("Smash the T-Rex", player)
@@ -137,10 +139,7 @@ class THAWWorld(World):
     # You must override this function and return this infinitely repeatable item's name.
     # In our case, we defined a function called get_random_filler_item_name for this purpose in our items.py.
 
-    def create_junk_items(world: "THAWWorld", count: int) -> List[Item]:
-        junk_pool: List[Item] = []
-        junk_list: Dict[str, int] = {}
-        junk_weights = {
+    filler_items = {
         "5 Bucks": 30,
         "10 Bucks": 25,
         "40 Bucks": 10,
@@ -149,24 +148,19 @@ class THAWWorld(World):
         "500 Bucks": 3
         }
 
-        # Collect all filler items and their weights
-        for name, data in item_data_table.items():
-            if data.classification == ItemClassification.filler:
-                weight = junk_weights.get(name)
-                if weight is not None:
-                    junk_list[name] = weight
+    def create_filler_items(world: "THAWWorld", count: int) -> List[Item]:
+        filler_items: List[Item] = []
 
-        # Randomly generate junk items using weights
         for _ in range(count):
             item_name = world.random.choices(
-                list(junk_list.keys()),
-                weights=list(junk_list.values()),
+                list(filler_items.keys()),
+                weights=list(filler_items.values()),
                 k=1
             )[0]
 
-            junk_pool.append(world.create_item(item_name))
+            filler_items.append(world.create_item(item_name))
 
-        return junk_pool
+        return filler_items
 
     # There may be data that the game client will need to modify the behavior of the game.
     # This is what slot_data exists for. Upon every client connection, the slot's slot_data is sent to the client.
