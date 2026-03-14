@@ -106,12 +106,7 @@ class THAWWorld(World):
     def set_rules(self) -> None:
         Rules.set_all_rules(self)
         Rules.set_completion_condition(self)
-        #self.create_events
-
-    #def create_events(self):
-        #smashtrex = self.multiworld.get_location("Smash the T-Rex", self.player)
-        #if self.options.end_goal == EndGoal.option_smash_the_t_rex:
-        #    smashtrex.place_locked_item("Victory")
+        #need to define an entrance rule function in future
 
     def create_items(self) -> None:
         self.seed_item_table = setup_items(self.options)
@@ -123,7 +118,7 @@ class THAWWorld(World):
                 temp_item = self.create_item(item_name)
                 self.multiworld.itempool.append(temp_item)
 
-        #doesn't work rn
+        #it works!
         if self.options.end_goal == EndGoal.option_smash_the_t_rex:
             smashtrex = self.multiworld.get_location("Smash the T-Rex", self.player)
             victory = self.create_item("Victory")
@@ -136,15 +131,7 @@ class THAWWorld(World):
         if remaining_items > 0:
             self.create_filler_items(remaining_items)
 
-    # Our world class must also have a create_item function that can create any one of our items by name at any time.
-    # We also put this in a different file, the same one that create_items is in.
-
-    # For features such as item links and panic-method start inventory, AP may ask your world to create extra filler.
-    # The way it does this is by calling get_filler_item_name.
-    # For this purpose, your world *must* have at least one infinitely repeatable item (usually filler).
-    # You must override this function and return this infinitely repeatable item's name.
-    # In our case, we defined a function called get_random_filler_item_name for this purpose in our items.py.
-
+    #maybe add traps later? may also need balancing
     def create_filler_items(self, remaining_items: int):
         filler_items = {
             "5 Bucks": 30,
@@ -160,8 +147,6 @@ class THAWWorld(World):
         for _ in range(remaining_items):
             item_name = self.random.choices(names, weights=weights, k=1)[0]
             self.multiworld.itempool.append(self.create_item(item_name))
-
-    #def create_filler_items(self, remaining_items) -> None:
 
     # There may be data that the game client will need to modify the behavior of the game.
     # This is what slot_data exists for. Upon every client connection, the slot's slot_data is sent to the client.
