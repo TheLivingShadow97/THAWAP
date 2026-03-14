@@ -68,7 +68,7 @@ cash_item_table: Dict[str, THAWItemData] = {
 }
 
 goaling_item_table: Dict[str, THAWItemData] = {
-    "Victory": THAWItemData(None, ItemClassification.filler | ItemClassification.progression_skip_balancing, 0),
+    "Victory": THAWItemData(None, ItemClassification.progression, 0),
 }
 
 item_data_table = {

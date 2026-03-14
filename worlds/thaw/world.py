@@ -1,18 +1,17 @@
 from collections.abc import Mapping
-from itertools import count
-from typing import Any, Dict, List
+from typing import Any, Dict
 
 # Imports of base Archipelago modules must be absolute.
 from worlds.AutoWorld import World
-from BaseClasses import Item, ItemClassification, MultiWorld
+from BaseClasses import Item
 
 # Imports of your world's files must be relative.
-from . import Regions, Rules, web_world
+from . import Rules, web_world
 from . import Options as thaw_options  # rename due to a name conflict with World.options
 from .Locations import setup_locations, all_location_table
-from .Items import THAWItemData, item_data_table, setup_items, THAWItem, goaling_item_table 
+from .Items import THAWItemData, item_data_table, setup_items, THAWItem 
 from .Regions import create_regions
-from .Options import EndGoal, THAWOptions
+from .Options import EndGoal
 
 seed_location_table: Dict[str, int]
 seed_item_table: Dict[str, int]
@@ -124,11 +123,11 @@ class THAWWorld(World):
                 temp_item = self.create_item(item_name)
                 self.multiworld.itempool.append(temp_item)
 
-        
+        #doesn't work rn
         if self.options.end_goal == EndGoal.option_smash_the_t_rex:
             smashtrex = self.multiworld.get_location("Smash the T-Rex", self.player)
-            Victory = self.create_item("Victory" in goaling_item_table)
-            smashtrex.place_locked_item(Victory)
+            victory = self.create_item("Victory")
+            smashtrex.place_locked_item(victory)
 
 
         total_locations = len(self.multiworld.get_locations())
