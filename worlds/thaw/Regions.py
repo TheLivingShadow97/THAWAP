@@ -127,12 +127,3 @@ def create_regions_and_locations(name: str, player: int, world: MultiWorld, seed
 
     world.regions.append(region)
     return region
-
-
-
-#def create_events(multiworld: THAWWorld)-> None:
-    # If your world has events, you can create them here.
-    # Events are just like locations, but they don't have an item attached to them and are not part of the item pool.
-    # They are used for things like cutscenes, boss fights, or other important milestones that you want to have rules around.
-    #if THAWOptions().EndGoal == EndGoal.option_smash_the_t_rex:
-    #    "Smash the T-Rex".place_locked_item("Victory")
