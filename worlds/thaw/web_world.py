@@ -3,7 +3,7 @@ from worlds.AutoWorld import WebWorld
 
 from .Options import option_groups, option_presets
 
-
+# we're gaming
 # For our game to display correctly on the website, we need to define a WebWorld subclass.
 class THAWWebWorld(WebWorld):
     # We need to override the "game" field of the WebWorld superclass.
