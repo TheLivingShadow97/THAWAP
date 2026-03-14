@@ -234,16 +234,13 @@ endgoal_t_rex_locations = {
     "Smash the T-Rex": THAWLocData(None, "Hollywood")
 }
 
+#general locations
 all_location_table = {
     **THAW_hollywood_locations,
     **endgoal_t_rex_locations
 }
 
-# Every location must have a unique integer ID associated with it.
-# We will have a lookup from location name to ID here that, in world.py, we will import and bind to the world class.
-# Even if a location doesn't exist on specific options, it must be present in this lookup.
-# Location IDs don't need to be sequential, as long as they're unique and greater than 0.
-
+#feeds into gen
 def setup_locations(options: THAWOptions):
     temp_location_table = {}
     temp_location_table.update({**endgoal_t_rex_locations})
