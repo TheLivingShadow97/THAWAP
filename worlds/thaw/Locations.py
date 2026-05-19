@@ -154,7 +154,7 @@ THAW_hollywood_locations = {
         "HW Elbow Pads: Left Elbow Pad": THAWLocData(10350002, "Hollywood"),
         "HW Elbow Pads: Right Elbow Pad": THAWLocData(10350003, "Hollywood"),
         # Knee Pads
-        "HW Knee Pads: ": THAWLocData(10360001, "Hollywood"),
+        "HW Knee Pads": THAWLocData(10360001, "Hollywood"),
         # Shoes
         "HW Shoes: Skate Shoe 1": THAWLocData(10370001, "Hollywood"),
         "HW Shoes: Combat Boots": THAWLocData(10370002, "Hollywood"),
