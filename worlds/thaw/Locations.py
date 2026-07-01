@@ -57,7 +57,7 @@ THAW_hollywood_locations = {
     "HW Gap: Half Moon Grind": THAWLocData(10200021, "Hollywood"),
     "HW Gap: Straight Outta Bronson": THAWLocData(10200022, "Hollywood"),
     "HW Gap: Yellow": THAWLocData(10200023, "Hollywood"),
-    "HW Gap: FireEscape Level 3": THAWLocData(10200024, "Hollywood"),
+    "HW Gap: FireEscape Level3": THAWLocData(10200024, "Hollywood"),
     "HW Gap: Record Deal": THAWLocData(10200025, "Hollywood"),
     "HW Gap: Spinner": THAWLocData(10200026, "Hollywood"),
     "HW Gap: Dump Up": THAWLocData(10200027, "Hollywood"),
