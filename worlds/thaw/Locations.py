@@ -465,11 +465,11 @@ all_location_table = {
 #feeds into gen
 def setup_locations(options: THAWOptions):
     temp_location_table = {}
-    if options.end_goal == options.EndGoal.option_get_to_the_skate_ranch:
+    if options.end_goal == options.end_goal.option_get_to_the_skate_ranch:
         temp_location_table.update({**endgoal_skate_ranch_locations})
         temp_location_table.update({**THAW_beverly_hills_locations})
         temp_location_table.update({**THAW_beverly_hills_shop_locations})
-    if options.end_goal == options.EndGoal.option_smash_the_t_rex:
+    if options.end_goal == options.end_goal.option_smash_the_t_rex:
         temp_location_table.update({**endgoal_t_rex_locations})
     temp_location_table.update({**THAW_hollywood_locations})
     temp_location_table.update({**THAW_hollywood_shop_locations})

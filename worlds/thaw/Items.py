@@ -90,6 +90,6 @@ def setup_items(options: THAWOptions) -> Dict[str, THAWItemData]:
     temp_item_table.update({**stats_item_table})
     temp_item_table.update({**skating_abilities_item_table})
     temp_item_table.update({**goaling_item_table})
-    if options.end_goal == options.EndGoal.option_get_to_the_skate_ranch:
+    if options.end_goal == options.end_goal.option_get_to_the_skate_ranch:
         temp_item_table.update({misc_item_table})
     return temp_item_table
