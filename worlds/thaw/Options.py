@@ -17,7 +17,7 @@ class EndGoal(Choice):
     """
     Determine the goal for the seed
 
-    Smash the T-Rex: Break the T-rex and gain access to Bevely Hills. Should be a faster game suitable for syncs.
+    Smash the T-Rex: Break the T-rex and gain access to Beverly Hills. Should be a faster game suitable for syncs.
     Get to the Skate Ranch: Reach the Skate Ranch to win. THIS DOES NOT WORK YET! DO NOT USE THIS OPTION!
     """
     display_name = "Victory Goal"

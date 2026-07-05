@@ -71,9 +71,9 @@ def set_all_location_rules(world: "THAWWorld"):
              lambda state: state.has_all(("Skate Ability: Spine Transfer/Acid Drop/Bank Drop", "Skate Ability: Sticker Slap/Wall Plant/Vert Wall Plant", "Skate Ability: Manual"), player) and state.has("Progressive Speed Stat", world.player, 1) and state.has("Progressive Ollie Stat", world.player, 4))
     
     if options.end_goal == EndGoal.option_get_to_the_skate_ranch:    
-        add_rule(world.get_entrance("Hollywood -> Beverly Hills", player),
+        add_rule(world.get_entrance("Hollywood -> Beverly Hills"),
                 lambda state: state.has("Bus Access: Beverly Hills", player) or state.has_all(("Skate Ability: Caveman", "Skate Ability: Manual", "Skate Ability: Revert"), player))
-        add_rule(world.get_entrance("Beverly Hills -> Skate Ranch", player),
+        add_rule(world.get_entrance("Beverly Hills -> Skate Ranch"),
                 lambda state: state.has_all(("Skate Ability: Natas Spin", "Skate Ability: Wall Run", "Skate Ability: Wall Flip", "Skate Ability: Shimmy", "Skate Ability: Back Tuck/Front Tuck", "Skate Ability: Spine Transfer/Acid Drop/Bank Drop", "Skate Ability: Flips/Rolls", "Skate Ability: Boneless", "Skate Ability: Boned Ollie", "Skate Ability: Sticker Slap/Wall Plant/Vert Wall Plant", "Skate Ability: Wall Ride", "Skate Ability: Manual"), player))
         # Beverly Hills Stage 1 Missions
         add_rule(world.multiworld.get_location("BH Mission: Learn the Natas Spin", player),
