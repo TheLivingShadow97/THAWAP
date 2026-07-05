@@ -152,7 +152,7 @@ class THAWWorld(World):
             }
         if self.options.end_goal == EndGoal.option_get_to_the_skate_ranch:
             filler_items = {
-                "5 Bucks": 105,
+                "5 Bucks": 101,
                 "10 Bucks": 87,
                 "40 Bucks": 42,
                 "100 Bucks": 18,
