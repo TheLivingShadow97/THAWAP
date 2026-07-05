@@ -113,11 +113,13 @@ class THAWWorld(World):
 
     def create_items(self) -> None:
         self.seed_item_table = setup_items(self.options)
+        totalthawitemscount = 0
 
         for item_name, data in self.seed_item_table.items():
             count = data.count
 
             for _ in range(count):
+                totalthawitemscount += 1
                 temp_item = self.create_item(item_name)
                 self.multiworld.itempool.append(temp_item)
 
@@ -132,9 +134,8 @@ class THAWWorld(World):
             victory = self.create_item("Victory")
             skateranch.place_locked_item(victory)
 
-
-        total_locations = len(self.multiworld.get_locations())
-        remaining_items_thaw = total_locations - len(self.multiworld.itempool)
+        total_locations = len(self.multiworld.get_locations(self.player))
+        remaining_items_thaw = total_locations - len(totalthawitemscount)
 
         if remaining_items_thaw > 0:
             if self.options.end_goal == EndGoal.option_smash_the_t_rex:
