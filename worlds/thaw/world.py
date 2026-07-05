@@ -54,7 +54,10 @@ class THAWWorld(World):
     location_name_groups = {
         "Hollywood": {name for name, data in all_location_table.items()
                                    if data.region == "Hollywood"},
+        "Hollywood Shops": {name for name, data in all_location_table.items()
+                                   if data.region == "Hollywood Shops"},
         "Beverly Hills": {name for name, data in all_location_table.items() if data.region == "Beverly Hills"},
+        "Beverly Hills Shops": {name for name, data in all_location_table.items() if data.region == "Beverly Hills Shops"},
         "Downtown": {name for name, data in all_location_table.items() if data.region == "Downtown"},
         "Santa Monica": {name for name, data in all_location_table.items()
                                       if data.region == "Santa Monica"},
@@ -124,6 +127,11 @@ class THAWWorld(World):
             victory = self.create_item("Victory")
             smashtrex.place_locked_item(victory)
 
+        if self.options.end_goal == EndGoal.option_get_to_the_skate_ranch:
+            skateranch = self.multiworld.get_location("Get to the Skate Ranch", self.player)
+            victory = self.create_item("Victory")
+            skateranch.place_locked_item(victory)
+
 
         total_locations = len(self.multiworld.get_locations())
         remaining_items = total_locations - len(self.multiworld.itempool)
@@ -133,15 +141,24 @@ class THAWWorld(World):
 
     #maybe add traps later? may also need balancing
     def create_filler_items(self, remaining_items: int):
-        filler_items = {
-            "5 Bucks": 30,
-            "10 Bucks": 25,
-            "40 Bucks": 10,
-            "100 Bucks": 6,
-            "200 Bucks": 5,
-            "500 Bucks": 3
-        }
-
+        if self.options.end_goal == EndGoal.option_smash_the_t_rex:
+            filler_items = {
+                "5 Bucks": 30,
+                "10 Bucks": 25,
+                "40 Bucks": 10,
+                "100 Bucks": 6,
+                "200 Bucks": 5,
+                "500 Bucks": 3
+            }
+        if self.options.end_goal == EndGoal.option_get_to_the_skate_ranch:
+            filler_items = {
+                "5 Bucks": 105,
+                "10 Bucks": 87,
+                "40 Bucks": 42,
+                "100 Bucks": 18,
+                "200 Bucks": 6,
+                "500 Bucks": 3
+            }
         names, weights = zip(*filler_items.items())
 
         for _ in range(remaining_items):

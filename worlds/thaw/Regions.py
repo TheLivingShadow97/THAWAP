@@ -21,7 +21,9 @@ from .Locations import THAWLocation
 #opening regions
 thaw_stage1_regions = [
     "Hollywood",
+    "Hollywood Shops",
     "Beverly Hills",
+    "Beverly Hills Shops",
     "Downtown",
     "Santa Monica",
     "East LA"
@@ -88,10 +90,12 @@ def create_regions(world: MultiWorld, player: int, seed_locations):
     for region in thaw_all_regions:
         create_regions_and_locations(region, player, world, seed_locations)
 
+    connect_regions(world, player, "Hollywood", "Hollywood Shops")
     connect_regions(world, player, "Hollywood", "Beverly Hills")
     connect_regions(world, player, "Hollywood", "Downtown")
     connect_regions(world, player, "Hollywood", "Santa Monica")
     connect_regions(world, player, "Hollywood", "East LA")
+    connect_regions(world, player, "Beverly Hills", "Beverly Hills Shops")
     connect_regions(world, player, "Beverly Hills", "Skate Ranch")
     connect_regions(world, player, "Skate Ranch", "Beverly Hills Stage 2")
     connect_regions(world, player, "Skate Ranch", "Hollywood Stage 2")

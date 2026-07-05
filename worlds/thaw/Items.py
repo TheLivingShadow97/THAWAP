@@ -61,10 +61,14 @@ skating_abilities_item_table: Dict[str, THAWItemData] = {
 cash_item_table: Dict[str, THAWItemData] = {
     "5 Bucks": THAWItemData(90000001, ItemClassification.filler | ItemClassification.progression_skip_balancing, 0),
     "10 Bucks": THAWItemData(90000002, ItemClassification.filler | ItemClassification.progression_skip_balancing, 0),
-    "40 Bucks": THAWItemData(90000003, ItemClassification.filler | ItemClassification.progression_skip_balancing, 0),
-    "100 Bucks": THAWItemData(90000004, ItemClassification.filler | ItemClassification.progression_skip_balancing, 0),
-    "200 Bucks": THAWItemData(90000005, ItemClassification.filler | ItemClassification.progression_skip_balancing, 0),
-    "500 Bucks": THAWItemData(90000006, ItemClassification.filler | ItemClassification.progression_skip_balancing, 0)
+    "40 Bucks": THAWItemData(90000003, ItemClassification.filler | ItemClassification.progression_skip_balancing, 1),
+    "100 Bucks": THAWItemData(90000004, ItemClassification.filler | ItemClassification.progression_skip_balancing, 1),
+    "200 Bucks": THAWItemData(90000005, ItemClassification.filler | ItemClassification.progression_skip_balancing, 1),
+    "500 Bucks": THAWItemData(90000006, ItemClassification.filler | ItemClassification.progression_skip_balancing, 1)
+}
+
+misc_item_table: Dict[str, THAWItemData] = {
+    "Bus Access: Beverly Hills": THAWItemData(96900001, ItemClassification.progression, 1),
 }
 
 goaling_item_table: Dict[str, THAWItemData] = {
@@ -76,7 +80,8 @@ item_data_table = {
     **stats_item_table,
     **skating_abilities_item_table,
     **cash_item_table,
-    **goaling_item_table
+    **goaling_item_table,
+    **misc_item_table,
 }
 
 #feeds into gen
@@ -85,4 +90,6 @@ def setup_items(options: THAWOptions) -> Dict[str, THAWItemData]:
     temp_item_table.update({**stats_item_table})
     temp_item_table.update({**skating_abilities_item_table})
     temp_item_table.update({**goaling_item_table})
+    if options.end_goal == options.EndGoal.option_get_to_the_skate_ranch:
+        temp_item_table.update({misc_item_table})
     return temp_item_table
