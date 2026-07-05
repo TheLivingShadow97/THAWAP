@@ -18,7 +18,7 @@ class EndGoal(Choice):
     Determine the goal for the seed
 
     Smash the T-Rex: Break the T-rex and gain access to Beverly Hills. Should be a faster game suitable for syncs.
-    Get to the Skate Ranch: Reach the Skate Ranch to win. THIS DOES NOT WORK YET! DO NOT USE THIS OPTION!
+    Get to the Skate Ranch: Reach the Skate Ranch to win.
     """
     display_name = "Victory Goal"
     option_smash_the_t_rex = 0
