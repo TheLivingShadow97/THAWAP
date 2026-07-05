@@ -134,10 +134,16 @@ class THAWWorld(World):
 
 
         total_locations = len(self.multiworld.get_locations())
-        remaining_items = total_locations - len(self.multiworld.itempool)
+        remaining_items_thaw = total_locations - len(self.multiworld.itempool)
 
-        if remaining_items > 0:
-            self.create_filler_items(remaining_items)
+        if remaining_items_thaw > 0:
+            if self.options.end_goal == EndGoal.option_smash_the_t_rex:
+                if remaining_items_thaw > 80:
+                    remaining_items_thaw = 80
+            if self.options.end_goal == EndGoal.option_get_to_the_skate_ranch:
+                if remaining_items_thaw > 270:
+                    remaining_items_thaw = 270
+            self.create_filler_items(remaining_items_thaw)
 
     #maybe add traps later? may also need balancing
     def create_filler_items(self, remaining_items: int):
