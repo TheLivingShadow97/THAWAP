@@ -25,7 +25,7 @@ def set_all_location_rules(world: "THAWWorld"):
     options = world.options
 
     add_rule(world.get_entrance("Hollywood -> Hollywood Shops"),
-                lambda state: state.has_any(["40 Bucks", "100 Bucks", "200 Bucks", "500 Bucks"], player))
+                lambda state: state.has(("40 Bucks"), player))
     # Hollywood Stage 1 Missions
     add_rule(world.multiworld.get_location("HW Mission: Learn to Caveman", player),
              lambda state: state.has("Skate Ability: Caveman", player))
