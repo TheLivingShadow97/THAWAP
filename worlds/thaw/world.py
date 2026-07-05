@@ -128,11 +128,13 @@ class THAWWorld(World):
             smashtrex = self.multiworld.get_location("Smash the T-Rex", self.player)
             victory = self.create_item("Victory")
             smashtrex.place_locked_item(victory)
+            totalthawitemscount += 1
 
         if self.options.end_goal == EndGoal.option_get_to_the_skate_ranch:
             skateranch = self.multiworld.get_location("Get to the Skate Ranch", self.player)
             victory = self.create_item("Victory")
             skateranch.place_locked_item(victory)
+            totalthawitemscount += 1
 
         total_locations = len(self.multiworld.get_locations(self.player))
         remaining_items_thaw = total_locations - totalthawitemscount
