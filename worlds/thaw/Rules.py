@@ -83,9 +83,9 @@ def set_all_location_rules(world: "THAWWorld"):
         add_rule(world.multiworld.get_location("BH Mission: Learn Spines, Flips, Rolls, Acid Drops, Banks", player),
                 lambda state: state.has_all(("Skate Ability: Spine Transfer/Acid Drop/Bank Drop", "Skate Ability: Flips/Rolls"), player))
         add_rule(world.multiworld.get_location("BH Mission: Learn the Boneless and Boned Ollie", player),
-                lambda state: state.has(("Skate Ability: Boneless", "Skate Ability: Boned Ollie"), player))
+                lambda state: state.has_all(("Skate Ability: Boneless", "Skate Ability: Boned Ollie"), player))
         add_rule(world.multiworld.get_location("BH Mission: Learn some wall tricks", player),
-                lambda state: state.has(("Skate Ability: Sticker Slap/Wall Plant/Vert Wall Plant", "Skate Ability: Wall Ride"), player))
+                lambda state: state.has_all(("Skate Ability: Sticker Slap/Wall Plant/Vert Wall Plant", "Skate Ability: Wall Ride"), player))
         add_rule(world.multiworld.get_location("BH Mission: Impress Murphy", player),
                 lambda state: state.has_all(("Skate Ability: Natas Spin", "Skate Ability: Wall Run", "Skate Ability: Wall Flip", "Skate Ability: Shimmy", "Skate Ability: Back Tuck/Front Tuck", "Skate Ability: Spine Transfer/Acid Drop/Bank Drop", "Skate Ability: Flips/Rolls", "Skate Ability: Boneless", "Skate Ability: Boned Ollie", "Skate Ability: Sticker Slap/Wall Plant/Vert Wall Plant", "Skate Ability: Wall Ride"), player))
         add_rule(world.multiworld.get_location("BH Mission: Impress Boone", player),
@@ -109,7 +109,7 @@ def set_all_location_rules(world: "THAWWorld"):
         add_rule(world.multiworld.get_location("BH Gap: Across the street", player),
                 lambda state: state.has_all_counts({"Progressive Speed Stat":7, "Progressive Ollie Stat":3}, player))
         add_rule(world.multiworld.get_location("BH Gap: Roof 2 roof", player),
-                lambda state: state.has_all("Skate Ability: Spine Transfer/Acid Drop/Bank Drop", player))
+                lambda state: state.has("Skate Ability: Spine Transfer/Acid Drop/Bank Drop", player))
         add_rule(world.multiworld.get_location("BH Gap: Qp 2 wire hop", player),
                 lambda state: state.has_all_counts({"Progressive Speed Stat":5, "Progressive Ollie Stat":3}, player))
         add_rule(world.multiworld.get_location("BH Gap: Got wings?", player),
