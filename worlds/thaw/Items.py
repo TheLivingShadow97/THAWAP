@@ -61,10 +61,10 @@ skating_abilities_item_table: Dict[str, THAWItemData] = {
 cash_item_table: Dict[str, THAWItemData] = {
     "5 Bucks": THAWItemData(90000001, ItemClassification.filler | ItemClassification.progression_skip_balancing, 0),
     "10 Bucks": THAWItemData(90000002, ItemClassification.filler | ItemClassification.progression_skip_balancing, 0),
-    "40 Bucks": THAWItemData(90000003, ItemClassification.filler | ItemClassification.progression_skip_balancing, 1),
-    "100 Bucks": THAWItemData(90000004, ItemClassification.filler | ItemClassification.progression_skip_balancing, 1),
-    "200 Bucks": THAWItemData(90000005, ItemClassification.filler | ItemClassification.progression_skip_balancing, 1),
-    "500 Bucks": THAWItemData(90000006, ItemClassification.filler | ItemClassification.progression_skip_balancing, 1)
+    "40 Bucks": THAWItemData(90000003, ItemClassification.filler | ItemClassification.progression_skip_balancing, 0),
+    "100 Bucks": THAWItemData(90000004, ItemClassification.filler | ItemClassification.progression_skip_balancing, 0),
+    "200 Bucks": THAWItemData(90000005, ItemClassification.filler | ItemClassification.progression_skip_balancing, 0),
+    "500 Bucks": THAWItemData(90000006, ItemClassification.filler | ItemClassification.progression_skip_balancing, 0)
 }
 
 misc_item_table: Dict[str, THAWItemData] = {
