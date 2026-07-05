@@ -138,8 +138,8 @@ class THAWWorld(World):
 
         if remaining_items_thaw > 0:
             if self.options.end_goal == EndGoal.option_smash_the_t_rex:
-                if remaining_items_thaw > 80:
-                    remaining_items_thaw = 80
+                if remaining_items_thaw > 77:
+                    remaining_items_thaw = 77
             if self.options.end_goal == EndGoal.option_get_to_the_skate_ranch:
                 if remaining_items_thaw > 270:
                     remaining_items_thaw = 270
