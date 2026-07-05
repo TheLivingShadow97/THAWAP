@@ -135,7 +135,7 @@ class THAWWorld(World):
             skateranch.place_locked_item(victory)
 
         total_locations = len(self.multiworld.get_locations(self.player))
-        remaining_items_thaw = total_locations - len(totalthawitemscount)
+        remaining_items_thaw = total_locations - totalthawitemscount
 
         if remaining_items_thaw > 0:
             if self.options.end_goal == EndGoal.option_smash_the_t_rex:
