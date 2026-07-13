@@ -184,4 +184,5 @@ class THAWWorld(World):
                 "end_goal": self.options.end_goal.value,
             },
         }
+        return slot_data
         
