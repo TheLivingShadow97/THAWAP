@@ -161,7 +161,7 @@ class THAWWorld(World):
             }
         if self.options.end_goal == EndGoal.option_get_to_the_skate_ranch:
             filler_items = {
-                "5 Bucks": 101,
+                "5 Bucks": 100,
                 "10 Bucks": 87,
                 "40 Bucks": 42,
                 "100 Bucks": 18,
@@ -177,8 +177,11 @@ class THAWWorld(World):
     # There may be data that the game client will need to modify the behavior of the game.
     # This is what slot_data exists for. Upon every client connection, the slot's slot_data is sent to the client.
     # slot_data is just a dictionary using basic types, that will be converted to json when sent to the client.
-    def fill_slot_data(self) -> Mapping[str, Any]:
-        # If you need access to the player's chosen options on the client side, there is a helper for that.
-        return self.options.as_dict(
-            "end_goal"
-        )
+    def fill_slot_data(self) -> Dict[str, object]:
+        slot_data: Dict[str, object] = {}
+        slot_data = {
+            "options": {
+                "end_goal": self.options.end_goal.value,
+            },
+        }
+        

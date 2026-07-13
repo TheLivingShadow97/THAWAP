@@ -280,7 +280,7 @@ THAW_beverly_hills_locations = {
     "BH Gap: Frontside entrance transfer": THAWLocData(20200026, "Beverly Hills"),
     "BH Gap: Got wings?": THAWLocData(20200027, "Beverly Hills"),
     "BH Gap: Nice manual": THAWLocData(20200028, "Beverly Hills"),
-    "BH Gap: Ralphs transfer": THAWLocData(20200029, "Beverly Hills"),
+    #"BH Gap: Ralphs transfer": THAWLocData(20200029, "Beverly Hills"),
     "BH Gap: Gas 2 rail": THAWLocData(20200030, "Beverly Hills"),
     "BH Gap: Sweet stairset": THAWLocData(20200031, "Beverly Hills"),
     "BH Gap: Get your pizza": THAWLocData(20200032, "Beverly Hills"),
