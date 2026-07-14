@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 
-from Options import Choice, OptionGroup, PerGameCommonOptions, Range, Toggle
+from Options import Choice, OptionGroup, PerGameCommonOptions, Range, Toggle, DefaultOnToggle
 
 # In this file, we define the options the player can pick.
 # The most common types of options are Toggle, Range and Choice.
@@ -25,18 +25,26 @@ class EndGoal(Choice):
     option_get_to_the_skate_ranch = 1
     default = 0
 
+class Tricks4Cash(DefaultOnToggle):
+    """
+    Makes the client read any landed combo above 4,000 points, divide it by 4,000, and then give you that much cash in exchange.
+    A combo worth 20,000 points will give you 5 bucks, for example.
+    I recommend leaving this on to cut down on grinding and give you ways to earn money besides doing tricks for the homeless man."""
+    display_name = "Tricks 4 Cash" 
+
 # We must now define a dataclass inheriting from PerGameCommonOptions that we put all our options in.
 # This is in the format "option_name_in_snake_case: OptionClassName".
 @dataclass
 class THAWOptions(PerGameCommonOptions):
     end_goal: EndGoal
-
+    tricks_4_cash: Tricks4Cash
 
 # If we want to group our options by similar type, we can do so as well. This looks nice on the website.
 option_groups = [
     OptionGroup(
         "Gameplay Options",
-        [EndGoal],
+        [EndGoal, 
+        Tricks4Cash],
     )
 ]
 
@@ -44,6 +52,7 @@ option_groups = [
 option_presets = {
     "Quickplay": {
         "end_goal": EndGoal.option_smash_the_t_rex,
+        "tricks_4_cash": True
     },
     #"the true way to play": {
     #    "hard_mode": True,

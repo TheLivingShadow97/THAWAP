@@ -182,6 +182,7 @@ class THAWWorld(World):
         slot_data = {
             "options": {
                 "end_goal": self.options.end_goal.value,
+                "tricks_4_cash": self.options.tricks_4_cash.value
             },
         }
         return slot_data
