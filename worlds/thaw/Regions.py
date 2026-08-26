@@ -47,8 +47,8 @@ thaw_stage1_regions = [
     "Downtown Shops $100",
     "Santa Monica No Skateboard Needed",
     "Santa Monica",
-    "East LA No Skateboard Needed"
-    "East LA"
+    "East LA No Skateboard Needed",
+    "East LA",
 ]
 
 #get parts for the skate ranch and win the contest
@@ -59,12 +59,12 @@ thaw_stage2_regions = [
     "Beverly Hills Stage 2",
     "Hollywood Stage 2",
     "Downtown Stage 2",
-    "Vans Park"
+    "Vans Park",
 ]
 
 #go to the beach
 thaw_stage3_regions = [
-    "Santa Monica Stage 2"
+    "Santa Monica Stage 2",
 ]
 
 #get the crane
