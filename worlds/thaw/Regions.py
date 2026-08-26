@@ -55,7 +55,7 @@ thaw_stage1_regions = [
 thaw_stage2_regions = [
     "Skate Ranch",
     "Skate Ranch Stage 2",
-    "Skate Ranch Piece Missions"
+    "Skate Ranch Piece Missions",
     "Beverly Hills Stage 2",
     "Hollywood Stage 2",
     "Downtown Stage 2",
