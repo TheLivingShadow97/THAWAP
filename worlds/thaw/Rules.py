@@ -276,7 +276,7 @@ def set_all_location_rules(world: "THAWWorld"):
         add_rule(world.multiworld.get_location("DT Mission: Kick off the bell", player),
             lambda state: state.has("Progressive Speed Stat", player, 3))
         add_rule(world.multiworld.get_location("DT Mission: Learn the Board Stall", player),
-            lambda state: state.has("Skate Ability: Stall", player, 3))
+            lambda state: state.has("Skate Ability: Stall", player))
         set_rule(world.get_location("DT Mission: Learn Special and Focus"), can_vanspark) 
 
     # Victory Goal Stuff
