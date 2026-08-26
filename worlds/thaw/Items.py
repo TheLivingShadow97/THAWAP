@@ -25,7 +25,7 @@ stats_item_table: Dict[str, THAWItemData] = {
     "Progressive Air Stat": THAWItemData(10000001, ItemClassification.useful, 10),
     "Progressive Speed Stat": THAWItemData(10000002, ItemClassification.progression, 10),
     "Progressive Rail Stat": THAWItemData(10000003, ItemClassification.progression, 10),
-    "Progressive Manual Stat": THAWItemData(10000004, ItemClassification.useful, 10),
+    "Progressive Manual Stat": THAWItemData(10000004, ItemClassification.progression, 10),
     "Progressive Flip Stat": THAWItemData(10000005, ItemClassification.useful, 10),
     "Progressive Lip Stat": THAWItemData(10000006, ItemClassification.useful, 10),
     "Progressive Ollie Stat": THAWItemData(10000007, ItemClassification.progression, 10),
