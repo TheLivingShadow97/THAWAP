@@ -176,13 +176,13 @@ def set_all_location_rules(world: "THAWWorld"):
                 lambda state: state.has_all(("Skate Ability: Natas Spin", "Skate Ability: Wall Run", "Skate Ability: Wall Flip", "Skate Ability: Shimmy", "Skate Ability: Back Tuck/Front Tuck", "Skate Ability: Spine Transfer/Acid Drop/Bank Drop", "Skate Ability: Flips/Rolls", "Skate Ability: Boneless", "Skate Ability: Boned Ollie", "Skate Ability: Sticker Slap/Wall Plant/Vert Wall Plant", "Skate Ability: Wall Ride", "Skate Ability: Manual"), player))
         if options.include_skateboard_in_item_pool==True: 
             add_rule(world.multiworld.get_location("BH Mission: Second Tagging Mission", player),
-                lambda state: (state.has_all(("Skate Ability: Wall Run", "Skate Ability: Shimmy"), player)) or state.has("Skateboard Unlock"))
+                lambda state: (state.has_all(("Skate Ability: Wall Run", "Skate Ability: Shimmy"), player)) or state.has("Skateboard Unlock", player))
             add_rule(world.multiworld.get_location("BH Mission: Third Tagging Mission", player),
-                lambda state: (state.has_all(("Skate Ability: Wall Run", "Skate Ability: Shimmy"), player)) or state.has("Skateboard Unlock"))
+                lambda state: (state.has_all(("Skate Ability: Wall Run", "Skate Ability: Shimmy"), player)) or state.has("Skateboard Unlock", player))
             add_rule(world.multiworld.get_location("BH Mission: Fourth Tagging Mission", player),
-                lambda state: (state.has_all(("Skate Ability: Wall Run", "Skate Ability: Shimmy"), player)) or state.has("Skateboard Unlock"))
+                lambda state: (state.has_all(("Skate Ability: Wall Run", "Skate Ability: Shimmy"), player)) or state.has("Skateboard Unlock", player))
             add_rule(world.multiworld.get_location("BH Mission: Fifth Tagging Mission", player),
-                lambda state: (state.has_all(("Skate Ability: Wall Run", "Skate Ability: Shimmy"), player)) or state.has("Skateboard Unlock"))
+                lambda state: (state.has_all(("Skate Ability: Wall Run", "Skate Ability: Shimmy"), player)) or state.has("Skateboard Unlock", player))
         
         # Beverly Hills Stage 1 Gaps
         add_rule(world.multiworld.get_location("BH Gap: Rail 2 QP", player),
