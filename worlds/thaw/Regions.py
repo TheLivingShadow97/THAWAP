@@ -80,7 +80,7 @@ thaw_stage5_regions = [
 #rescue Boone and get some parts
 thaw_stage6_regions = [
     "East LA Stage 2",
-    "Skate Ranch Stage 2"
+    "Skate Ranch Stage 3",
 ]
 
 #gather skaters to save green pipes point
