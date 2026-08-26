@@ -136,38 +136,45 @@ class THAWWorld(World):
             skateranch.place_locked_item(victory)
             totalthawitemscount += 1
 
+        if self.options.end_goal == EndGoal.option_win_the_skate_competition:
+            winamjam = self.multiworld.get_location("Win the Skate Competition", self.player)
+            victory = self.create_item("Victory")
+            winamjam.place_locked_item(victory)
+            totalthawitemscount += 1
+
         total_locations = len(self.multiworld.get_locations(self.player))
         remaining_items_thaw = total_locations - totalthawitemscount
 
-        if remaining_items_thaw > 0:
-            if self.options.end_goal == EndGoal.option_smash_the_t_rex:
-                if remaining_items_thaw > 77:
-                    remaining_items_thaw = 77
-            if self.options.end_goal == EndGoal.option_get_to_the_skate_ranch:
-                if remaining_items_thaw > 270:
-                    remaining_items_thaw = 270
-            self.create_filler_items(remaining_items_thaw)
+        self.create_filler_items(remaining_items_thaw)
 
     #maybe add traps later? may also need balancing
     def create_filler_items(self, remaining_items: int):
-        if self.options.end_goal == EndGoal.option_smash_the_t_rex:
-            filler_items = {
-                "5 Bucks": 30,
-                "10 Bucks": 25,
-                "40 Bucks": 10,
-                "100 Bucks": 6,
-                "200 Bucks": 5,
-                "500 Bucks": 3
-            }
-        if self.options.end_goal == EndGoal.option_get_to_the_skate_ranch:
-            filler_items = {
-                "5 Bucks": 100,
-                "10 Bucks": 87,
-                "40 Bucks": 42,
-                "100 Bucks": 18,
-                "200 Bucks": 6,
-                "500 Bucks": 3
-            }
+        #if self.options.end_goal == EndGoal.option_smash_the_t_rex:
+        #    filler_items = {
+        #        "5 Bucks": 30,
+        #        "10 Bucks": 25,
+        #        "40 Bucks": 10,
+        #        "100 Bucks": 6,
+        #        "200 Bucks": 5,
+        #        "500 Bucks": 3
+        #    }
+        #if self.options.end_goal == EndGoal.option_get_to_the_skate_ranch:
+        #    filler_items = {
+        #        "5 Bucks": 100,
+        #        "10 Bucks": 87,
+        #        "40 Bucks": 42,
+        #        "100 Bucks": 18,
+        #        "200 Bucks": 6,
+        #        "500 Bucks": 3
+        #    }
+        filler_items = {
+            "5 Bucks": 25,
+            "10 Bucks": 35,
+            "40 Bucks": 20,
+            "100 Bucks": 10,
+            "200 Bucks": 7,
+            "500 Bucks": 3
+        }
         names, weights = zip(*filler_items.items())
 
         for _ in range(remaining_items):
@@ -182,7 +189,12 @@ class THAWWorld(World):
         slot_data = {
             "options": {
                 "end_goal": self.options.end_goal.value,
-                "tricks_4_cash": self.options.tricks_4_cash.value
+                "tricks_4_cash": self.options.tricks_4_cash.value,
+                "progressive_wallet": self.options.progressive_wallet.value,
+                "shopsanity": self.options.shopsanity.value,
+                #"shop_keys": self.options.shop_keys.value,
+                "include_skateboard_in_item_pool": self.options.include_skateboard_in_item_pool.value,
+                "deathlink_choice": self.options.deathlink_choice.value,
             },
         }
         return slot_data

@@ -20,18 +20,42 @@ from .Locations import THAWLocation
 
 #opening regions
 thaw_stage1_regions = [
+    "Hollywood No Skateboard Needed",
     "Hollywood",
     "Hollywood Shops",
+    "Hollywood Shops $10",
+    "Hollywood Shops $20",
+    "Hollywood Shops $30",
+    "Hollywood Shops $50",
+    "Hollywood Shops $100",
+    "Beverly Hills No Skateboard Needed",
     "Beverly Hills",
     "Beverly Hills Shops",
+    "Beverly Hills Shops $10",
+    "Beverly Hills Shops $20",
+    "Beverly Hills Shops $30",
+    "Beverly Hills Shops $50",
+    "Beverly Hills Shops $100",
+    "Beverly Hills Shops $1250",
+    "Downtown No Skateboard Needed",
     "Downtown",
+    "Downtown Shops",
+    "Downtown Shops $10",
+    "Downtown Shops $20",
+    "Downtown Shops $30",
+    "Downtown Shops $50",
+    "Downtown Shops $100",
+    "Santa Monica No Skateboard Needed",
     "Santa Monica",
+    "East LA No Skateboard Needed"
     "East LA"
 ]
 
 #get parts for the skate ranch and win the contest
 thaw_stage2_regions = [
     "Skate Ranch",
+    "Skate Ranch Stage 2",
+    "Skate Ranch Piece Missions"
     "Beverly Hills Stage 2",
     "Hollywood Stage 2",
     "Downtown Stage 2",
@@ -90,27 +114,51 @@ def create_regions(world: MultiWorld, player: int, seed_locations):
     for region in thaw_all_regions:
         create_regions_and_locations(region, player, world, seed_locations)
 
+    connect_regions(world, player, "Hollywood No Skateboard Needed", "Hollywood")
     connect_regions(world, player, "Hollywood", "Hollywood Shops")
-    connect_regions(world, player, "Hollywood", "Beverly Hills")
-    connect_regions(world, player, "Hollywood", "Downtown")
-    connect_regions(world, player, "Hollywood", "Santa Monica")
-    connect_regions(world, player, "Hollywood", "East LA")
+    connect_regions(world, player, "Hollywood Shops", "Hollywood Shops $10")
+    connect_regions(world, player, "Hollywood Shops", "Hollywood Shops $20")
+    connect_regions(world, player, "Hollywood Shops", "Hollywood Shops $30")
+    connect_regions(world, player, "Hollywood Shops", "Hollywood Shops $50")
+    connect_regions(world, player, "Hollywood Shops", "Hollywood Shops $100")
+    connect_regions(world, player, "Hollywood No Skateboard Needed", "Beverly Hills No Skateboard Needed")
+    connect_regions(world, player, "Hollywood No Skateboard Needed", "Downtown No Skateboard Needed")
+    connect_regions(world, player, "Hollywood No Skateboard Needed", "Santa Monica No Skateboard Needed")
+    connect_regions(world, player, "Hollywood No Skateboard Needed", "East LA No Skateboard Needed")
+    connect_regions(world, player, "Beverly Hills No Skateboard Needed", "Beverly Hills")
+    connect_regions(world, player, "Downtown No Skateboard Needed", "Downtown")
+    connect_regions(world, player, "Santa Monica No Skateboard Needed", "Santa Monica")
+    connect_regions(world, player, "East LA No Skateboard Needed", "East LA")
     connect_regions(world, player, "Beverly Hills", "Beverly Hills Shops")
+    connect_regions(world, player, "Beverly Hills", "Beverly Hills Shops $10")
+    connect_regions(world, player, "Beverly Hills", "Beverly Hills Shops $20")
+    connect_regions(world, player, "Beverly Hills", "Beverly Hills Shops $30")
+    connect_regions(world, player, "Beverly Hills", "Beverly Hills Shops $50")
+    connect_regions(world, player, "Beverly Hills", "Beverly Hills Shops $100")
+    connect_regions(world, player, "Beverly Hills", "Beverly Hills Shops $1250")
     connect_regions(world, player, "Beverly Hills", "Skate Ranch")
-    connect_regions(world, player, "Skate Ranch", "Beverly Hills Stage 2")
-    connect_regions(world, player, "Skate Ranch", "Hollywood Stage 2")
-    connect_regions(world, player, "Skate Ranch", "Downtown Stage 2")
+    connect_regions(world, player, "Downtown", "Downtown Shops")
+    connect_regions(world, player, "Downtown Shops", "Downtown Shops $10")
+    connect_regions(world, player, "Downtown Shops", "Downtown Shops $20")
+    connect_regions(world, player, "Downtown Shops", "Downtown Shops $30")
+    connect_regions(world, player, "Downtown Shops", "Downtown Shops $50")
+    connect_regions(world, player, "Downtown Shops", "Downtown Shops $100")
+    connect_regions(world, player, "Skate Ranch", "Skate Ranch Stage 2")
+    connect_regions(world, player, "Skate Ranch Stage 2", "Skate Ranch Piece Missions")
+    connect_regions(world, player, "Skate Ranch Stage 2", "Beverly Hills Stage 2")
+    connect_regions(world, player, "Skate Ranch Stage 2", "Hollywood Stage 2")
+    connect_regions(world, player, "Skate Ranch Stage 2", "Downtown Stage 2")
     connect_regions(world, player, "Downtown Stage 2", "Vans Park")
     connect_regions(world, player, "Vans Park", "Santa Monica Stage 2")
     connect_regions(world, player, "Santa Monica Stage 2", "Oil Rig")
     connect_regions(world, player, "Oil Rig", "Downtown Stage 3")
     connect_regions(world, player, "Downtown Stage 3", "East LA Stage 2")
-    connect_regions(world, player, "East LA Stage 2", "Skate Ranch Stage 2")
-    connect_regions(world, player, "Skate Ranch Stage 2", "Beverly Hills Stage 3")
-    connect_regions(world, player, "Skate Ranch Stage 2", "Hollywood Stage 3")
-    connect_regions(world, player, "Skate Ranch Stage 2", "Downtown Stage 4")
-    connect_regions(world, player, "Skate Ranch Stage 2", "East LA Stage 3")
-    connect_regions(world, player, "Skate Ranch Stage 2", "Santa Monica Stage 3")
+    connect_regions(world, player, "East LA Stage 2", "Skate Ranch Stage 3")
+    connect_regions(world, player, "Skate Ranch Stage 3", "Beverly Hills Stage 3")
+    connect_regions(world, player, "Skate Ranch Stage 3", "Hollywood Stage 3")
+    connect_regions(world, player, "Skate Ranch Stage 3", "Downtown Stage 4")
+    connect_regions(world, player, "Skate Ranch Stage 3", "East LA Stage 3")
+    connect_regions(world, player, "Skate Ranch Stage 3", "Santa Monica Stage 3")
     connect_regions(world, player, "East LA Stage 3", "Casino")
 
 

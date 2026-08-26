@@ -21,7 +21,6 @@ class THAWItemData(NamedTuple):
     classification: ItemClassification = ItemClassification.progression_deprioritized_skip_balancing
     count: Optional[int] = 1
 
-
 stats_item_table: Dict[str, THAWItemData] = {
     "Progressive Air Stat": THAWItemData(10000001, ItemClassification.useful, 10),
     "Progressive Speed Stat": THAWItemData(10000002, ItemClassification.progression, 10),
@@ -59,16 +58,36 @@ skating_abilities_item_table: Dict[str, THAWItemData] = {
 }
 
 cash_item_table: Dict[str, THAWItemData] = {
-    "5 Bucks": THAWItemData(90000001, ItemClassification.filler | ItemClassification.progression_skip_balancing, 0),
-    "10 Bucks": THAWItemData(90000002, ItemClassification.filler | ItemClassification.progression_skip_balancing, 0),
-    "40 Bucks": THAWItemData(90000003, ItemClassification.filler | ItemClassification.progression_skip_balancing, 1),
-    "100 Bucks": THAWItemData(90000004, ItemClassification.filler | ItemClassification.progression_skip_balancing, 1),
-    "200 Bucks": THAWItemData(90000005, ItemClassification.filler | ItemClassification.progression_skip_balancing, 1),
-    "500 Bucks": THAWItemData(90000006, ItemClassification.filler | ItemClassification.progression_skip_balancing, 1)
+    "5 Bucks": THAWItemData(90000001, ItemClassification.filler, 0),
+    "10 Bucks": THAWItemData(90000002, ItemClassification.filler, 0),
+    "40 Bucks": THAWItemData(90000003, ItemClassification.filler, 1),
+    "100 Bucks": THAWItemData(90000004, ItemClassification.filler, 1),
+    "200 Bucks": THAWItemData(90000005, ItemClassification.filler, 1),
+    "500 Bucks": THAWItemData(90000006, ItemClassification.filler, 1)
 }
 
-misc_item_table: Dict[str, THAWItemData] = {
+wallet_item_table: Dict[str, THAWItemData] = {
+    "Progressive Wallet": THAWItemData(91000001, ItemClassification.progression, 12),
+}
+
+skateboard_item_table: Dict[str, THAWItemData] = {
+    "Skateboard Unlock": THAWItemData(92000001, ItemClassification.progression, 1),
+}
+
+bh_shopkey_item_table: Dict[str, THAWItemData] = {
+    "Beverly Hills Shops Key": THAWItemData(93000001, ItemClassification.progression, 1),
+}
+
+dt_shopkey_item_table: Dict[str, THAWItemData] = {
+    "Downtown Shops Key": THAWItemData(93000002, ItemClassification.progression, 1),
+}
+
+bh_bus_access_item_table: Dict[str, THAWItemData] = {
     "Bus Access: Beverly Hills": THAWItemData(96900001, ItemClassification.progression, 1),
+}
+
+dt_bus_access_item_table: Dict[str, THAWItemData] = {
+    "Bus Access: Downtown": THAWItemData(96900002, ItemClassification.progression, 1),
 }
 
 goaling_item_table: Dict[str, THAWItemData] = {
@@ -81,7 +100,12 @@ item_data_table = {
     **skating_abilities_item_table,
     **cash_item_table,
     **goaling_item_table,
-    **misc_item_table,
+    **bh_bus_access_item_table,
+    **dt_bus_access_item_table,
+    **wallet_item_table,
+    **skateboard_item_table,
+    **bh_shopkey_item_table,
+    **dt_shopkey_item_table,
 }
 
 #feeds into gen
@@ -91,5 +115,17 @@ def setup_items(options: THAWOptions) -> Dict[str, THAWItemData]:
     temp_item_table.update({**skating_abilities_item_table})
     temp_item_table.update({**goaling_item_table})
     if options.end_goal == options.end_goal.option_get_to_the_skate_ranch:
-        temp_item_table.update({**misc_item_table})
+        temp_item_table.update({**bh_bus_access_item_table})
+        #if options.shop_keys==True:
+        #    temp_item_table.update({**bh_shopkey_item_table})
+    if options.end_goal == options.end_goal.option_win_the_skate_competition:
+        temp_item_table.update({**bh_bus_access_item_table})
+        temp_item_table.update({**dt_bus_access_item_table})
+        #if options.shop_keys==True:
+        #            temp_item_table.update({**bh_shopkey_item_table})
+        #            temp_item_table.update({**dt_shopkey_item_table})
+    if options.progressive_wallet == True:
+        temp_item_table.update({**wallet_item_table})
+    if options.include_skateboard_in_item_pool==True:
+        temp_item_table.update({**skateboard_item_table})
     return temp_item_table
