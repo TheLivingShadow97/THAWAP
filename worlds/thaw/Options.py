@@ -29,8 +29,8 @@ class EndGoal(Choice):
 
 class Tricks4Cash(DefaultOnToggle):
     """
-    Makes the client read any landed combo above 3,000 points, divide it by 3,000, and then give you that much cash in exchange.
-    A combo worth 15,000 points will give you 5 bucks, for example.
+    Makes the client read any landed combo above 2,000 points, divide it by 2,000, and then give you that much cash in exchange.
+    A combo worth 20,000 points will give you 10 bucks, for example.
     I recommend leaving this on to cut down on grinding and give you ways to earn money besides doing tricks for the homeless man."""
     display_name = "Tricks 4 Cash" 
 

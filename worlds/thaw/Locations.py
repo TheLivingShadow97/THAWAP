@@ -462,7 +462,7 @@ THAW_downtown_locations = {
     "DT Gap: Hop On!": THAWLocData(40200001, "Downtown"),
     "DT Gap: Car hop": THAWLocData(40200002, "Downtown"),
     "DT Gap: China Awning": THAWLocData(40200003, "Downtown"),
-    "DT Gap: Chinatown Sign": THAWLocData(40200004, "Downtown"),
+    "DT Gap: Chinatown Sign": THAWLocData(40200004, "Downtown No Skateboard Needed"),
     "DT Gap: Electric Wire!": THAWLocData(40200005, "Downtown"),
     "DT Gap: Pillar": THAWLocData(40200006, "Downtown"),
     "DT Gap: Dumpster 2 Loading!": THAWLocData(40200007, "Downtown"),
