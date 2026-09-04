@@ -67,7 +67,7 @@ cash_item_table: Dict[str, THAWItemData] = {
 }
 
 wallet_item_table: Dict[str, THAWItemData] = {
-    "Progressive Wallet": THAWItemData(91000001, ItemClassification.progression, 12),
+    "Progressive Wallet": THAWItemData(91000001, ItemClassification.progression, 15),
 }
 
 skateboard_item_table: Dict[str, THAWItemData] = {
