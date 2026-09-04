@@ -197,7 +197,7 @@ class THAWWorld(World):
                 #"shop_keys": self.options.shop_keys.value,
                 "include_skateboard_in_item_pool": self.options.include_skateboard_in_item_pool.value,
                 "deathlink_choice": self.options.deathlink_choice.value,
-                "current_apworld_version": self.apworldcurrentversion.value
+                "current_apworld_version": self.apworldcurrentversion,
             },
         }
         return slot_data
