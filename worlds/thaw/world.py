@@ -39,6 +39,7 @@ class THAWWorld(World):
 
     # You must override the "game" field to say the name of the game.
     game = "Tony Hawk's American Wasteland"
+    apworldcurrentversion = "Downtown Update Initial Release"
 
     # The WebWorld is a definition class that governs how this world will be displayed on the website.
     web = web_world.THAWWebWorld()
@@ -146,6 +147,7 @@ class THAWWorld(World):
         remaining_items_thaw = total_locations - totalthawitemscount
 
         self.create_filler_items(remaining_items_thaw)
+        apworldcurrentversion = "Downtown Update"
 
     #maybe add traps later? may also need balancing
     def create_filler_items(self, remaining_items: int):
@@ -195,6 +197,7 @@ class THAWWorld(World):
                 #"shop_keys": self.options.shop_keys.value,
                 "include_skateboard_in_item_pool": self.options.include_skateboard_in_item_pool.value,
                 "deathlink_choice": self.options.deathlink_choice.value,
+                "current_apworld_version": self.apworldcurrentversion.value
             },
         }
         return slot_data
