@@ -267,11 +267,11 @@ def set_all_location_rules(world: "THAWWorld"):
         add_rule(world.multiworld.get_location("DT Gap: Tunnel Transfer", player),
             lambda state: state.has_all_counts({"Progressive Speed Stat":10, "Progressive Ollie Stat":10}, player))
         add_rule(world.multiworld.get_location("DT Gap: Pyramid Drop!", player),
-            lambda state: state.has_all_counts({"Progressive Speed Stat":2, "Skate Ability: Stall":1, "Skate Ability: Spine Transfer/Acid Drop/Bank Drop":1}, player))
+            lambda state: state.has_all_counts({"Progressive Speed Stat":2, "Skate Ability: Stall":1}, player))
         add_rule(world.multiworld.get_location("DT Gap: Big Lip!", player),
-            lambda state: state.has_all_counts({"Progressive Speed Stat":2, "Skate Ability: Stall":1, "Skate Ability: Spine Transfer/Acid Drop/Bank Drop":1}, player))
+            lambda state: state.has_all_counts({"Progressive Speed Stat":2, "Skate Ability: Stall":1}, player))
         add_rule(world.multiworld.get_location("DT Gap: Overpass Air!", player),
-            lambda state: state.has_all_counts({"Progressive Speed Stat":5, "Skate Ability: Stall":1, "Skate Ability: Spine Transfer/Acid Drop/Bank Drop":1}, player))
+            lambda state: state.has_all_counts({"Progressive Speed Stat":5, "Skate Ability: Stall":1}, player))
         #DT Stage 2 Missions
         add_rule(world.multiworld.get_location("DT Mission: Kick off the bell", player),
             lambda state: state.has("Progressive Speed Stat", player, 3))

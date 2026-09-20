@@ -498,9 +498,6 @@ THAW_downtown_locations = {
     "DT Gap: Underground Bank Transfer": THAWLocData(40200037, "Downtown"),
     "DT Gap: Wire 2 Awning!": THAWLocData(40200038, "Downtown"),
     "DT Gap: Tunnel Transfer": THAWLocData(40200039, "Downtown"),
-    "DT Gap: Pyramid Drop!": THAWLocData(40200040, "Downtown"),
-    "DT Gap: Big Lip!": THAWLocData(40200041, "Downtown"),
-    "DT Gap: Overpass Air!": THAWLocData(40200042, "Downtown"),
 }
 
 THAW_downtown_shop_locations = {
@@ -580,6 +577,9 @@ THAW_downtownstage2_locations = {
     "DT Mission: Smash the Chinatown tower!": THAWLocData(41100005, "Downtown Stage 2"),
     "DT Mission: Learn the Board Stall": THAWLocData(41100006, "Downtown Stage 2"),
     "DT Mission: Learn Special and Focus": THAWLocData(41100007, "Downtown Stage 2"),
+    "DT Gap: Pyramid Drop!": THAWLocData(40200040, "Downtown Stage 2"),
+    "DT Gap: Big Lip!": THAWLocData(40200041, "Downtown Stage 2"),
+    "DT Gap: Overpass Air!": THAWLocData(40200042, "Downtown Stage 2"),
 }
 
 THAW_skateranchstage2_locations = {
